@@ -24,11 +24,14 @@ const CityHeader = (props) => {
     <View style={styles.headerContainer}>
       <TextInput
         style={styles.inputCity}
-        onChangeText={(text) => onChangeText(text)}
+        underlineColorAndroid="rgba(0,0,0,0)"
+        placeholder="City"
+        placeholderTextColor="#fff"
         value={city}
+        onChangeText={(text) => onChangeText(text)}
       />
-      <TouchableOpacity>
-        <Text>{city}</Text>
+      <TouchableOpacity style={styles.inputButton}>
+        <Text style={styles.inputText}>Press me!</Text>
       </TouchableOpacity>
     </View>
   );
@@ -36,16 +39,30 @@ const CityHeader = (props) => {
 
 const styles = StyleSheet.create({
   headerContainer: {
-    backgroundColor: '#333333',
-    alignItems: 'center',
+    flexGrow: 1,
     justifyContent: 'center',
+    alignItems: 'center',
   },
   inputCity: {
+    width: 250,
     fontSize: 30,
-    flexGrow: 1,
-    alignItems: 'flex-end',
-    justifyContent: 'center',
+    borderRadius: 25,
+    backgroundColor: '#6f77c6',
     color: '#fff',
+    paddingVertical: 10,
+    marginVertical: 30,
+    textAlign: 'center',
+  },
+  inputButton: {
+    backgroundColor: '#010d79',
+    borderRadius: 25,
+    width: 250,
+    paddingVertical: 10,
+    marginVertical: 20,
+  },
+  inputText: {
+    color: '#fff',
+    textAlign: 'center',
   },
 });
 
