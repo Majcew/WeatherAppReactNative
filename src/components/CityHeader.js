@@ -10,19 +10,43 @@ import {
 
 const CityHeader = (props) => {
   const [city, setCity] = useState(props.city);
+  const [showInput, setShowInput] = useState(false);
 
   const onChangeText = (text) => {
     setCity(text);
   };
 
-  return <View style={styles.headerContainer}></View>;
+  const toggleInput = () => {
+    // setShowInput(!showInput);
+  };
+
+  return (
+    <View style={styles.headerContainer}>
+      <TextInput
+        style={styles.inputCity}
+        onChangeText={(text) => onChangeText(text)}
+        value={city}
+      />
+      <TouchableOpacity>
+        <Text>{city}</Text>
+      </TouchableOpacity>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
   headerContainer: {
-    height: 46,
-    width: '100%',
+    backgroundColor: '#333333',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  inputCity: {
+    fontSize: 30,
+    flexGrow: 1,
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+    color: '#fff',
+  },
 });
+
+export default CityHeader;
