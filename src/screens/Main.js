@@ -1,17 +1,35 @@
-import React, {useEffect, useState} from 'react';
-import {StatusBar, StyleSheet, View, Button} from 'react-native';
+import React, {useEffect, useState, Component} from 'react';
+import {
+  StatusBar,
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 
 import CityHeader from '../components/CityHeader';
 
-const Main = (props) => {
-  return (
-    <View style={styles.container}>
-      <StatusBar backgroundColor="#010d79" />
-      <CityHeader city="" />
-      <Button onPress={this.props.navigation.navigate('Info')}>PRESS</Button>
-    </View>
-  );
-};
+export default class Main extends Component {
+  render() {
+    const {navigation} = this.props;
+    return (
+      <View style={styles.container}>
+        <StatusBar backgroundColor="#010d79" />
+        <CityHeader city="" />
+        <View>
+          <TouchableOpacity
+            onPress={() => {
+              console.log('dupa');
+              navigation.navigate('About');
+              console.log('nawigejszyn', navigation);
+            }}>
+            <Text>Press me!</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -19,5 +37,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#0032b4',
   },
 });
-
-export default Main;

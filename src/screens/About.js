@@ -1,13 +1,15 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {StatusBar, StyleSheet, View} from 'react-native';
 
-const About = () => {
-  return (
-    <View style={styles.container}>
-      <StatusBar backgroundColor="#FFFFFF" />
-    </View>
-  );
-};
+export default class About extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <StatusBar backgroundColor="#FFFFFF" />
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -15,5 +17,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#0032b4',
   },
 });
-
-export default About;

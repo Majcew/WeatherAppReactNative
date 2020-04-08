@@ -7,14 +7,14 @@ import About from '../screens/About';
 
 const defaultNavigationOptions = {
   defaultNavigationOptions: {
-    headerShown: false,
+    headerShown: null,
   },
 };
 
 const AppNavigator = createStackNavigator(
   {
     Weather: Main,
-    Info: About,
+    About: About,
   },
   defaultNavigationOptions,
 );
