@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {StatusBar, StyleSheet, View} from 'react-native';
+import {StatusBar, StyleSheet, View, Button} from 'react-native';
 
 import CityHeader from '../components/CityHeader';
 
@@ -8,6 +8,7 @@ const Main = (props) => {
     <View style={styles.container}>
       <StatusBar backgroundColor="#010d79" />
       <CityHeader city="" />
+      <Button onPress={this.props.navigation.navigate('Info')}>PRESS</Button>
     </View>
   );
 };
