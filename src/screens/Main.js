@@ -19,9 +19,7 @@ export default class Main extends Component {
         <View>
           <TouchableOpacity
             onPress={() => {
-              console.log('dupa');
               navigation.navigate('About');
-              console.log('nawigejszyn', navigation);
             }}>
             <Text>Press me!</Text>
           </TouchableOpacity>

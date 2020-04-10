@@ -1,19 +1,15 @@
 import React, {Component} from 'react';
-import {StatusBar, StyleSheet, View} from 'react-native';
+import {View, Text} from 'react-native';
 
 export default class About extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <StatusBar backgroundColor="#FFFFFF" />
+      <View>
+        <Text>
+          Tutaj będzie bardzo piękny tekst na temat naszej apki (nie wazne w tej
+          chwili)
+        </Text>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#0032b4',
-  },
-});
