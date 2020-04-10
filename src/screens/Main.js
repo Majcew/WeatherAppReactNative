@@ -94,7 +94,11 @@ export default class Main extends Component {
             </View>
           </View>
           <View style={{marginHorizontal: 20, marginTop: 40}}>
-            <Button title="Press for more info" color="rgb(255, 55, 95)" />
+            <Button
+              title="Press for more info"
+              color="rgb(255, 55, 95)"
+              onPress={() => navigation.navigate('About')}
+            />
           </View>
         </View>
       </View>
