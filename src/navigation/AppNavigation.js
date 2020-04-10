@@ -3,16 +3,18 @@ import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 
 import Main from '../screens/Main';
+import About from '../screens/About';
 
 const defaultNavigationOptions = {
   defaultNavigationOptions: {
-    headerShown: false,
+    headerShown: null,
   },
 };
 
 const AppNavigator = createStackNavigator(
   {
     Weather: Main,
+    About: About,
   },
   defaultNavigationOptions,
 );
