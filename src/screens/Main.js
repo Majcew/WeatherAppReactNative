@@ -1,30 +1,21 @@
 import React, {useEffect, useState, Component} from 'react';
-import {
-  StatusBar,
-  StyleSheet,
-  View,
-  SafeAreaView,
-  Image,
-  Dimensions,
-  TextInput,
-  Text,
-  Button,
-  TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, View, Image, Dimensions, Text, Button} from 'react-native';
 
 import CityHeader from '../components/CityHeader';
-import {color} from 'react-native-reanimated';
+import API from '../utils/API';
 
 const Main = ({navigation}) => {
+  const getWeatherCityNameHandler = async (cityName) => {
+    try {
+      const fetchedWeather = await API.getWeatherCityName(cityName);
+    } catch (err) {}
+  };
+
   return (
     <View style={{flex: 1}}>
       <View style={styles.mainView}>
         <View style={styles.topBar}>
-          <TextInput
-            underlineColorAndroid="transparent"
-            placeholder="Put your city here"
-            style={styles.cityInput}
-          />
+          <CityHeader getWeatherCityName={getWeatherCityNameHandler} />
           <Image
             style={styles.iconTopBar}
             source={require('../img/icongps.png')}
