@@ -1,4 +1,4 @@
-import API from '../environment';
+import API from '../../environment';
 
 export const getWeatherCityName = async (cityName) => {
   try {
