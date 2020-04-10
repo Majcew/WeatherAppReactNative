@@ -11,9 +11,9 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-
 import CityHeader from '../components/CityHeader';
 import {color} from 'react-native-reanimated';
+import getWeatherImage from '../components/WeatherImage';
 
 const Main = ({navigation}) => {
   return (
@@ -36,10 +36,7 @@ const Main = ({navigation}) => {
         </View>
         <View style={styles.centerView}>
           <Text style={styles.dateTime}>21 May 2020</Text>
-          <Image
-            style={styles.weatherImg}
-            source={require('../img/cloudy.png')}
-          />
+          <Image style={styles.weatherImg} source={getWeatherImage('Mist')} />
         </View>
         <View style={styles.weatherDescription}>
           <Text style={styles.weatherTemp}>18{'\u00B0'}</Text>
