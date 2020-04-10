@@ -15,89 +15,92 @@ import CityHeader from '../components/CityHeader';
 import {TextInput} from 'react-native-gesture-handler';
 import {color} from 'react-native-reanimated';
 
-const Main = (props) => {
-  return (
-    <View style={{flex: 1}}>
-      <View style={styles.mainView}>
-        <View style={styles.topBar}>
-          <TextInput
-            underlineColorAndroid="transparent"
-            placeholder="Put your city here"
-            style={styles.cityInput}
-          />
-          <Image
-            style={styles.iconTopBar}
-            source={require('../img/icongps.png')}
-          />
-          <Image
-            style={styles.iconTopBar}
-            source={require('../img/iconsearch.png')}
-          />
-        </View>
-        <View style={styles.centerView}>
-          <Text style={styles.dateTime}>21 May 2020</Text>
-          <Image
-            style={styles.weatherImg}
-            source={require('../img/cloudy.png')}
-          />
-        </View>
-        <View style={styles.weatherDescription}>
-          <Text style={styles.weatherTemp}>18{'\u00B0'}</Text>
-          <View>
-            <Text style={styles.weatherDescriptionText}> Cloudy</Text>
-            <Text style={styles.weatherDescriptionTextDetails}>
-              {' '}
-              Weather is cloudy blabla
-            </Text>
+export default class Main extends Component {
+  render() {
+    const {navigation} = this.props;
+    return (
+      <View style={{flex: 1}}>
+        <View style={styles.mainView}>
+          <View style={styles.topBar}>
+            <TextInput
+              underlineColorAndroid="transparent"
+              placeholder="Put your city here"
+              style={styles.cityInput}
+            />
+            <Image
+              style={styles.iconTopBar}
+              source={require('../img/icongps.png')}
+            />
+            <Image
+              style={styles.iconTopBar}
+              source={require('../img/iconsearch.png')}
+            />
           </View>
-        </View>
-        <View style={styles.horizontalLine} />
-        <View style={styles.iconBox}>
-          <View>
-            <View style={styles.box1}>
-              <Image
-                style={styles.iconInSquare}
-                source={require('../img/sunsetup.png')}
-              />
+          <View style={styles.centerView}>
+            <Text style={styles.dateTime}>21 May 2020</Text>
+            <Image
+              style={styles.weatherImg}
+              source={require('../img/cloudy.png')}
+            />
+          </View>
+          <View style={styles.weatherDescription}>
+            <Text style={styles.weatherTemp}>18{'\u00B0'}</Text>
+            <View>
+              <Text style={styles.weatherDescriptionText}> Cloudy</Text>
+              <Text style={styles.weatherDescriptionTextDetails}>
+                {' '}
+                Weather is cloudy blabla
+              </Text>
             </View>
-            <Text style={{textAlign: 'center'}}>7:25</Text>
           </View>
-          <View>
-            <View style={styles.box2}>
-              <Image
-                style={styles.iconInSquare}
-                source={require('../img/sunsetdown.png')}
-              />
+          <View style={styles.horizontalLine} />
+          <View style={styles.iconBox}>
+            <View>
+              <View style={styles.box1}>
+                <Image
+                  style={styles.iconInSquare}
+                  source={require('../img/sunsetup.png')}
+                />
+              </View>
+              <Text style={{textAlign: 'center'}}>7:25</Text>
             </View>
-            <Text style={{textAlign: 'center'}}>19:30</Text>
-          </View>
+            <View>
+              <View style={styles.box2}>
+                <Image
+                  style={styles.iconInSquare}
+                  source={require('../img/sunsetdown.png')}
+                />
+              </View>
+              <Text style={{textAlign: 'center'}}>19:30</Text>
+            </View>
 
-          <View>
-            <View style={styles.box3}>
-              <Image
-                style={styles.iconInSquare}
-                source={require('../img/hpa.png')}
-              />
+            <View>
+              <View style={styles.box3}>
+                <Image
+                  style={styles.iconInSquare}
+                  source={require('../img/hpa.png')}
+                />
+              </View>
+              <Text style={{textAlign: 'center'}}>997 hPa</Text>
             </View>
-            <Text style={{textAlign: 'center'}}>997 hPa</Text>
-          </View>
-          <View>
-            <View style={styles.box4}>
-              <Image
-                style={styles.iconInSquare}
-                source={require('../img/humidity.png')}
-              />
+            <View>
+              <View style={styles.box4}>
+                <Image
+                  style={styles.iconInSquare}
+                  source={require('../img/humidity.png')}
+                />
+              </View>
+              <Text style={{textAlign: 'center'}}>50 %</Text>
             </View>
-            <Text style={{textAlign: 'center'}}>50 %</Text>
           </View>
-        </View>
-        <View style={{marginHorizontal: 20, marginTop: 40}}>
-          <Button title="Press for more info" color="rgb(255, 55, 95)" />
+          <View style={{marginHorizontal: 20, marginTop: 40}}>
+            <Button title="Press for more info" color="rgb(255, 55, 95)" />
+          </View>
         </View>
       </View>
-    </View>
-  );
-};
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
