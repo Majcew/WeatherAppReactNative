@@ -1,99 +1,103 @@
-import React, {useEffect, useState, Component} from 'react';
-import {
-  StatusBar,
-  StyleSheet,
-  View,
-  SafeAreaView,
-  Image,
-  Dimensions,
-  TextInput,
-  Text,
-  Button,
-  TouchableOpacity,
-} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {StyleSheet, View, Image, Dimensions, Text, Button} from 'react-native';
+
 import CityHeader from '../components/CityHeader';
-import {color} from 'react-native-reanimated';
-import getWeatherImage from '../components/WeatherImage';
+import * as API from '../utils/API';
+import {ScrollView} from 'react-native-gesture-handler';
 
 const Main = ({navigation}) => {
+  const [weather, setWeather] = useState();
+
+  const getWeatherCityNameHandler = async (cityName) => {
+    try {
+      const fetchedWeather = await API.getWeatherCityName(cityName);
+      if (fetchedWeather) {
+        setWeather(fetchedWeather);
+      }
+    } catch (err) {}
+  };
+
   return (
     <View style={{flex: 1}}>
-      <View style={styles.mainView}>
-        <View style={styles.topBar}>
-          <TextInput
-            underlineColorAndroid="transparent"
-            placeholder="Put your city here"
-            style={styles.cityInput}
-          />
-          <Image
-            style={styles.iconTopBar}
-            source={require('../img/icongps.png')}
-          />
-          <Image
-            style={styles.iconTopBar}
-            source={require('../img/iconsearch.png')}
-          />
-        </View>
-        <View style={styles.centerView}>
-          <Text style={styles.dateTime}>21 May 2020</Text>
-          <Image style={styles.weatherImg} source={getWeatherImage('Mist')} />
-        </View>
-        <View style={styles.weatherDescription}>
-          <Text style={styles.weatherTemp}>18{'\u00B0'}</Text>
-          <View>
-            <Text style={styles.weatherDescriptionText}> Cloudy</Text>
-            <Text style={styles.weatherDescriptionTextDetails}>
-              {' '}
-              Weather is cloudy blabla
-            </Text>
+      <ScrollView>
+        <View style={styles.mainView}>
+          <View style={styles.topBar}>
+            <CityHeader
+              city={weather?.name}
+              getWeatherCityName={getWeatherCityNameHandler}
+            />
+            <Image
+              style={styles.iconTopBar}
+              source={require('../img/icongps.png')}
+            />
+            <Image
+              style={styles.iconTopBar}
+              source={require('../img/iconsearch.png')}
+            />
           </View>
-        </View>
-        <View style={styles.horizontalLine} />
-        <View style={styles.iconBox}>
-          <View>
-            <View style={styles.box1}>
-              <Image
-                style={styles.iconInSquare}
-                source={require('../img/sunsetup.png')}
-              />
+          <View style={styles.centerView}>
+            <Text style={styles.dateTime}>21 May 2020</Text>
+            <Image
+              style={styles.weatherImg}
+              source={require('../img/cloudy.png')}
+            />
+          </View>
+          <View style={styles.weatherDescription}>
+            <Text style={styles.weatherTemp}>18{'\u00B0'}</Text>
+            <View>
+              <Text style={styles.weatherDescriptionText}> Cloudy</Text>
+              <Text style={styles.weatherDescriptionTextDetails}>
+                {' '}
+                Weather is cloudy blabla
+              </Text>
             </View>
-            <Text style={{textAlign: 'center'}}>7:25</Text>
           </View>
-          <View>
-            <View style={styles.box2}>
-              <Image
-                style={styles.iconInSquare}
-                source={require('../img/sunsetdown.png')}
-              />
+          <View style={styles.horizontalLine} />
+          <View style={styles.iconBox}>
+            <View>
+              <View style={styles.box1}>
+                <Image
+                  style={styles.iconInSquare}
+                  source={require('../img/sunsetup.png')}
+                />
+              </View>
+              <Text style={{textAlign: 'center'}}>7:25</Text>
             </View>
-            <Text style={{textAlign: 'center'}}>19:30</Text>
+            <View>
+              <View style={styles.box2}>
+                <Image
+                  style={styles.iconInSquare}
+                  source={require('../img/sunsetdown.png')}
+                />
+              </View>
+              <Text style={{textAlign: 'center'}}>19:30</Text>
+            </View>
+            <View>
+              <View style={styles.box3}>
+                <Image
+                  style={styles.iconInSquare}
+                  source={require('../img/hpa.png')}
+                />
+              </View>
+              <Text style={{textAlign: 'center'}}>997 hPa</Text>
+            </View>
+            <View>
+              <View style={styles.box4}>
+                <Image
+                  style={styles.iconInSquare}
+                  source={require('../img/humidity.png')}
+                />
+              </View>
+              <Text style={{textAlign: 'center'}}>50 %</Text>
+            </View>
           </View>
-          <View>
-            <View style={styles.box3}>
-              <Image
-                style={styles.iconInSquare}
-                source={require('../img/hpa.png')}
-              />
-            </View>
-            <Text style={{textAlign: 'center'}}>997 hPa</Text>
-          </View>
-          <View>
-            <View style={styles.box4}>
-              <Image
-                style={styles.iconInSquare}
-                source={require('../img/humidity.png')}
-              />
-            </View>
-            <Text style={{textAlign: 'center'}}>50 %</Text>
+          <View style={{marginHorizontal: 20, marginTop: 40}}>
+            <Button
+              title="Przechodzi do About"
+              onPress={() => navigation.navigate('About')}></Button>
           </View>
         </View>
-        <View style={{marginHorizontal: 20, marginTop: 40}}>
-          <Button
-            title="Przechodzi do About"
-            onPress={() => navigation.navigate('About')}
-          />
-        </View>
-      </View>
+      </ScrollView>
     </View>
   );
 };

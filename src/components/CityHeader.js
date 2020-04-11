@@ -10,16 +10,18 @@ import {
 
 const CityHeader = (props) => {
   const [city, setCity] = useState(props.city);
-  const [showInput, setShowInput] = useState(false);
 
   const onChangeText = (text) => {
     setCity(text);
   };
 
   const toggleInput = () => {
-    // setShowInput(!showInput);
+    props.getWeatherCityName(city);
   };
 
+  useEffect(() => {
+    setCity(props.city);
+  }, [props.city]);
   return (
     <View style={styles.headerContainer}>
       <TextInput
@@ -29,9 +31,10 @@ const CityHeader = (props) => {
         placeholderTextColor="#fff"
         value={city}
         onChangeText={(text) => onChangeText(text)}
+        onSubmitEditing={toggleInput}
       />
       <TouchableOpacity style={styles.inputButton}>
-        <Text style={styles.inputText}>Press me!</Text>
+        <Text style={styles.inputText}>{city}</Text>
       </TouchableOpacity>
     </View>
   );
