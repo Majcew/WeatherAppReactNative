@@ -7,12 +7,17 @@ const Location = (props) => {
   const [latitude, setLatitude] = useState(props.latitude);
   const [longitude, setLongitude] = useState(props.longitude);
 
-  const getLocationCoords = () => {
-    Geolocation.getCurrentPosition((info) => {
-      //tutaj nalezy dodać odpowiedni try-catch dla błedów typu "brak pozwoleń" oraz "nie odnaleziono koordynatów"
-      setLatitude(info.coords.latitude);
-      setLongitude(info.coords.longitude);
-    });
+  const getLocationCoords = async () => {
+    Geolocation.getCurrentPosition(
+      (info) => {
+        //tutaj nalezy dodać odpowiedni try-catch dla błedów typu "brak pozwoleń" oraz "nie odnaleziono koordynatów"
+        setLatitude(info.coords.latitude);
+        setLongitude(info.coords.longitude);
+        props.locationSet(latitude, longitude);
+      },
+      (error) => console.log(error),
+      {enableHighAccuracy: true, timeout: 5000},
+    );
   };
   return (
     <View>

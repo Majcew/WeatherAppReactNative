@@ -17,6 +17,18 @@ const Main = ({navigation}) => {
       }
     } catch (err) {}
   };
+  const getWeatherFromCoords = async (latitude, longitude) => {
+    try {
+      const fetchedWeather = await API.getWeatherFromCoords(
+        latitude,
+        longitude,
+      );
+      if (fetchedWeather) {
+        console.log(fetchedWeather);
+        setWeather(fetchedWeather);
+      }
+    } catch (err) {}
+  };
 
   return (
     <View style={{flex: 1}}>
@@ -27,7 +39,11 @@ const Main = ({navigation}) => {
               city={weather?.name}
               getWeatherCityName={getWeatherCityNameHandler}
             />
-            <Location latitude={0} longitude={0} />
+            <Location
+              latitude={0}
+              longitude={0}
+              locationSet={getWeatherFromCoords}
+            />
             <Image
               style={styles.iconTopBar}
               source={require('../img/iconsearch.png')}
