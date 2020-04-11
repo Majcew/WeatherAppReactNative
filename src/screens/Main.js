@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {StyleSheet, View, Image, Dimensions, Text, Button} from 'react-native';
 
 import CityHeader from '../components/CityHeader';
-import API from '../utils/API';
+import * as API from '../utils/API';
 import {ScrollView} from 'react-native-gesture-handler';
 
 const Main = ({navigation}) => {
@@ -10,12 +10,9 @@ const Main = ({navigation}) => {
 
   const getWeatherCityNameHandler = async (cityName) => {
     try {
-      console.log('co przechowuje cityname: ', cityName);
       const fetchedWeather = await API.getWeatherCityName(cityName);
-      console.log('ale on pobiera: ', fetchedWeather);
       if (fetchedWeather) {
         setWeather(fetchedWeather);
-        console.log('pobiera czy nie? ', fetchedWeather);
       }
     } catch (err) {}
   };

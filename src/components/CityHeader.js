@@ -18,7 +18,6 @@ const CityHeader = (props) => {
   const toggleInput = () => {
     props.getWeatherCityName(city);
   };
-  console.log('co przechowuje city w CityHeader:', city);
 
   useEffect(() => {
     setCity(props.city);
