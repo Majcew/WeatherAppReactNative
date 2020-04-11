@@ -15,6 +15,11 @@ const CityHeader = (props) => {
     setCity(text);
   };
 
+  const toggleInput = () => {
+    props.getWeatherCityName(city);
+  };
+  console.log('co przechowuje city w CityHeader:', city);
+
   useEffect(() => {
     setCity(props.city);
   }, [props.city]);
@@ -27,6 +32,7 @@ const CityHeader = (props) => {
         placeholderTextColor="#fff"
         value={city}
         onChangeText={(text) => onChangeText(text)}
+        onSubmitEditing={toggleInput}
       />
       <TouchableOpacity style={styles.inputButton}>
         <Text style={styles.inputText}>{city}</Text>

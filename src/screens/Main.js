@@ -7,12 +7,15 @@ import {ScrollView} from 'react-native-gesture-handler';
 
 const Main = ({navigation}) => {
   const [weather, setWeather] = useState();
+
   const getWeatherCityNameHandler = async (cityName) => {
     try {
+      console.log('co przechowuje cityname: ', cityName);
       const fetchedWeather = await API.getWeatherCityName(cityName);
       console.log('ale on pobiera: ', fetchedWeather);
       if (fetchedWeather) {
         setWeather(fetchedWeather);
+        console.log('pobiera czy nie? ', fetchedWeather);
       }
     } catch (err) {}
   };
