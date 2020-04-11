@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {StyleSheet, View, Image, Dimensions, Text, Button} from 'react-native';
 
 import CityHeader from '../components/CityHeader';
+import Location from '../components/Location';
 import * as API from '../utils/API';
 import {ScrollView} from 'react-native-gesture-handler';
 
@@ -26,10 +27,7 @@ const Main = ({navigation}) => {
               city={weather?.name}
               getWeatherCityName={getWeatherCityNameHandler}
             />
-            <Image
-              style={styles.iconTopBar}
-              source={require('../img/icongps.png')}
-            />
+            <Location latitude={0} longitude={0} />
             <Image
               style={styles.iconTopBar}
               source={require('../img/iconsearch.png')}
