@@ -28,6 +28,7 @@ const Main = ({navigation}) => {
         setWeather(fetchedWeather);
       }
     } catch (err) {}
+    console.log('wyswietlaj');
   };
 
   return (
