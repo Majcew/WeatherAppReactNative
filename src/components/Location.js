@@ -4,26 +4,34 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import Geolocation from '@react-native-community/geolocation';
 
 const Location = (props) => {
-  const [latitude, setLatitude] = useState(props.latitude);
-  const [longitude, setLongitude] = useState(props.longitude);
+  const [state, setState] = useState({
+    latitude: 0,
+    longitude: 0,
+  });
+
+  useEffect(() => {
+    // przy przypinaniu komponentu wywołuje się raz
+    getLocationCoords();
+  }, []);
 
   const getLocationCoords = () => {
     Geolocation.getCurrentPosition(
       (info) => {
         //tutaj nalezy dodać odpowiedni try-catch dla błedów typu "brak pozwoleń" oraz "nie odnaleziono koordynatów"
-        setLatitude(info.coords.latitude);
-        setLongitude(info.coords.longitude);
+        setState({
+          latitude: info.coords.latitude,
+          longitude: info.coords.longitude,
+        });
       },
       (error) => console.log(error),
       {enableHighAccuracy: true, timeout: 5000},
     );
-    props.locationSet(latitude, longitude);
   };
   return (
     <View>
       <TouchableOpacity
         style={(styles.icon, {backgroundColor: 'red'})}
-        onPress={getLocationCoords}>
+        onPress={() => props.locationSet(state.latitude, state.longitude)}>
         <Image style={styles.icon} source={require('../img/icongps.png')} />
       </TouchableOpacity>
     </View>

@@ -24,11 +24,9 @@ const Main = ({navigation}) => {
         longitude,
       );
       if (fetchedWeather) {
-        console.log(fetchedWeather);
         setWeather(fetchedWeather);
       }
     } catch (err) {}
-    console.log('wyswietlaj');
   };
 
   return (
@@ -40,11 +38,7 @@ const Main = ({navigation}) => {
               city={weather?.name}
               getWeatherCityName={getWeatherCityNameHandler}
             />
-            <Location
-              latitude={0}
-              longitude={0}
-              locationSet={getWeatherFromCoords}
-            />
+            <Location locationSet={getWeatherFromCoords} />
             <Image
               style={styles.iconTopBar}
               source={require('../img/iconsearch.png')}
