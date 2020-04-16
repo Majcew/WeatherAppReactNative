@@ -24,6 +24,7 @@ const Main = ({navigation}) => {
         longitude,
       );
       if (fetchedWeather) {
+        console.log(fetchedWeather);
         setWeather(fetchedWeather);
       }
     } catch (err) {}
