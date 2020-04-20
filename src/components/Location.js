@@ -4,34 +4,43 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import Geolocation from '@react-native-community/geolocation';
 
 const Location = (props) => {
-  const [latitude, setLatitude] = useState(0);
-  const [longitude, setLongitude] = useState(0);
-  const [step, setStep] = useState(false);
+  const [state, setState] = useState({
+    latitude: 0,
+    longitude: 0,
+  });
 
   useEffect(() => {
     return () => {
-      props.locationSet(latitude, longitude);
+      props.locationSet(state.latitude, state.longitude);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [step]);
+  }, [state]);
 
   const getLocationCoords = async () => {
-    await Geolocation.getCurrentPosition(
-      (info) => {
-        //tutaj nalezy dodać odpowiedni try-catch dla błedów typu "brak pozwoleń" oraz "nie odnaleziono koordynatów"
-        setLatitude(info.coords.latitude);
-        setLongitude(info.coords.longitude);
-      },
-      (error) => console.log(error),
-      {enableHighAccuracy: true, timeout: 5000},
-    );
-    setStep(step ? false : true);
+    return new Promise(function (resolve, reject) {
+      Geolocation.getCurrentPosition(resolve, reject);
+    });
+  };
+
+  // TODO: POZWOLENIAAAAAAAAAAAAAAAAAAAA
+
+  const getLocation = async () => {
+    let data = await getLocationCoords()
+      .then((info) => {
+        setState({
+          latitude: info.coords.latitude,
+          longitude: info.coords.longitude,
+        });
+      })
+      .catch((error) => {
+        console.log(error); //ani się nie waz to usunąć bo Cię skrzywdzę
+      });
   };
   return (
     <View>
       <TouchableOpacity
         style={(styles.icon, {backgroundColor: 'red'})}
-        onPress={getLocationCoords}>
+        onPress={getLocation}>
         <Image style={styles.icon} source={require('../img/icongps.png')} />
       </TouchableOpacity>
     </View>
