@@ -1,46 +1,24 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import Geolocation from '@react-native-community/geolocation';
 
 const Location = (props) => {
-  const [state, setState] = useState({
-    latitude: 0,
-    longitude: 0,
-  });
-
-  useEffect(() => {
-    return () => {
-      props.locationSet(state.latitude, state.longitude);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state]);
-
-  const getLocationCoords = async () => {
-    return new Promise(function (resolve, reject) {
-      Geolocation.getCurrentPosition(resolve, reject);
-    });
+  const getLocationCoords = () => {
+    Geolocation.getCurrentPosition(
+      (info) => {
+        props.locationSet(info.coords.latitude, info.coords.longitude);
+      },
+      (error) => console.log(error),
+      {enableHighAccuracy: true, timeout: 5000},
+    );
   };
 
-  // TODO: POZWOLENIAAAAAAAAAAAAAAAAAAAA
-
-  const getLocation = async () => {
-    let data = await getLocationCoords()
-      .then((info) => {
-        setState({
-          latitude: info.coords.latitude,
-          longitude: info.coords.longitude,
-        });
-      })
-      .catch((error) => {
-        console.log(error); //ani się nie waz to usunąć bo Cię skrzywdzę
-      });
-  };
   return (
     <View>
       <TouchableOpacity
         style={(styles.icon, {backgroundColor: 'red'})}
-        onPress={getLocation}>
+        onPress={getLocationCoords}>
         <Image style={styles.icon} source={require('../img/icongps.png')} />
       </TouchableOpacity>
     </View>
@@ -55,4 +33,5 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
   },
 });
+
 export default Location;
