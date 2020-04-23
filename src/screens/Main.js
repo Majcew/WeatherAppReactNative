@@ -9,15 +9,16 @@ import BasicWeather from '../components/BasicWeather';
 
 const Main = ({navigation}) => {
   const [weather, setWeather] = useState();
-
-
+  const [latitude, setlatitude] = useState();
+  const [longitude, setLongitude] = useState();
 
   const getWeatherCityNameHandler = async (cityName) => {
     try {
       const fetchedWeather = await API.getWeatherCityName(cityName);
       if (fetchedWeather) {
         setWeather(fetchedWeather);
-        
+        setlatitude(weather?.coord?.lat);
+        setLongitude(weather?.coord?.lon);
       }
     } catch (err) {}
   };
@@ -41,23 +42,28 @@ const Main = ({navigation}) => {
             />
           </View>
           <BasicWeather
-          updateTime ={weather?.dt}
-          temperature={weather?.main?.temp}
-          basicWeatherDescription={weather?.weather[0]?.main}
-          advancedWeatherDescription={weather?.weather[0]?.description}
+            updateTime={weather?.dt}
+            temperature={weather?.main?.temp}
+            basicWeatherDescription={weather?.weather[0]?.main}
+            advancedWeatherDescription={weather?.weather[0]?.description}
           />
-          
+
           <View style={styles.horizontalLine} />
           <DetailsBar
-          sunriseTime={weather?.sys?.sunrise}
-          sunsetTime={weather?.sys?.sunset}
-          airPressure={weather?.main?.pressure}
-          humidity={weather?.main?.humidity}
+            sunriseTime={weather?.sys?.sunrise}
+            sunsetTime={weather?.sys?.sunset}
+            airPressure={weather?.main?.pressure}
+            humidity={weather?.main?.humidity}
           />
           <View style={{marginHorizontal: 20, marginTop: 40}}>
             <Button
-              title="Przechodzi do About"
-              onPress={() => navigation.navigate('About')}></Button>
+              title="Przechodzi do Pokoju twojej starej"
+              onPress={() =>
+                navigation.navigate('WeatherForecast', {
+                  lat: weather?.coord?.lat,
+                  lon: weather?.coord?.lon,
+                })
+              }></Button>
           </View>
         </View>
       </ScrollView>
@@ -94,13 +100,12 @@ const styles = StyleSheet.create({
     marginTop: 8,
     marginHorizontal: 5,
   },
-  
+
   horizontalLine: {
     borderBottomColor: '#8d8d8d',
     borderBottomWidth: 1,
     marginHorizontal: 20,
   },
-  
 });
 
 export default Main;

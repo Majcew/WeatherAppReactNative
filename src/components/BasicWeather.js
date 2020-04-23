@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import moment from 'moment';
+import WeatherImage from '../components/WeatherImage';
+
 
 import {View, Text, StyleSheet, Image} from 'react-native';
 
@@ -31,7 +33,7 @@ const BasicWeather = (props) => {
         <Text style={styles.dateTime}>{updateTime}</Text>
         <Image
           style={styles.weatherImg}
-          source={require('../img/cloudy.png')}
+          source={WeatherImage(basicWeatherDescription)}
         />
       </View>
       <View style={styles.weatherDescription}>
