@@ -14,8 +14,10 @@ const BasicWeather = (props) => {
   );
 
   useEffect(() => {
-    setUpdateTime(moment(props.updateTime * 1000 + 2 * 3600 * 1000).format('DD MMM HH:mm'));
-    setTemperature(Math.round(props.temperature) + "\u00B0");
+    setUpdateTime(
+      moment(props.updateTime * 1000 + 2 * 3600 * 1000).format('DD MMM HH:mm'),
+    );
+    setTemperature(Math.round(props.temperature) + '\u00B0');
     setBasicWeatherDescription(props.basicWeatherDescription);
     setAdvancedWeatherDescription(props.advancedWeatherDescription);
   }, [
@@ -69,7 +71,6 @@ const styles = StyleSheet.create({
   weatherDescription: {
     flexDirection: 'row',
     marginHorizontal: 20,
-    
   },
   weatherTemp: {
     fontSize: 48,
@@ -78,13 +79,13 @@ const styles = StyleSheet.create({
   weatherDescriptionText: {
     marginTop: 0,
     fontSize: 24,
-    paddingLeft:8,
+    paddingLeft: 8,
   },
   weatherDescriptionTextDetails: {
     marginTop: 0,
     fontSize: 16,
     color: '#8d8d8d',
-    paddingLeft:8,
+    paddingLeft: 8,
   },
 });
 
