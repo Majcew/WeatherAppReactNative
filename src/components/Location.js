@@ -23,7 +23,9 @@ const Location = (props) => {
         {enableHighAccuracy: true},
       );
     } else {
-      request(permission);
+      request(permission).then((status) => {
+        setPermresult(status);
+      });
     }
   };
 
@@ -36,9 +38,7 @@ const Location = (props) => {
 
   return (
     <View>
-      <TouchableOpacity
-        style={(styles.icon, {backgroundColor: 'red'})}
-        onPress={getLocationCoords}>
+      <TouchableOpacity style={styles.icon} onPress={getLocationCoords}>
         <Image style={styles.icon} source={require('../img/icongps.png')} />
       </TouchableOpacity>
     </View>
