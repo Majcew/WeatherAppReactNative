@@ -10,7 +10,6 @@ import {
 
 const CityHeader = (props) => {
   const [city, setCity] = useState(props.city);
-
   const onChangeText = (text) => {
     setCity(text);
   };
