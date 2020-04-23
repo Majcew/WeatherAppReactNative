@@ -10,7 +10,7 @@ const Location = (props) => {
         props.locationSet(info.coords.latitude, info.coords.longitude);
       },
       (error) => console.log(error),
-      {enableHighAccuracy: true, timeout: 5000},
+      {enableHighAccuracy: true},
     );
   };
 

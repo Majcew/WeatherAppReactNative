@@ -23,6 +23,7 @@ const Main = ({navigation}) => {
         latitude,
         longitude,
       );
+      //const fetchedWeather = await API.getAllInOne(latitude, longitude);
       if (fetchedWeather) {
         console.log(fetchedWeather);
         setWeather(fetchedWeather);
