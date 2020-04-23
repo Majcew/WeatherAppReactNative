@@ -1,18 +1,38 @@
-import React from 'react';
-import {Image, StyleSheet, View} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {Image, StyleSheet, View, Platform} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import Geolocation from '@react-native-community/geolocation';
+import {check, request, PERMISSIONS, RESULTS} from 'react-native-permissions';
 
 const Location = (props) => {
+  const [permresult, setPermresult] = useState(RESULTS.DENIED);
+
+  const permission = Platform.select({
+    // sprawdza na jakiej platformie działa aplikacja
+    android: PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
+    ios: PERMISSIONS.IOS.LOCATION_WHEN_IN_USE,
+  });
+
   const getLocationCoords = () => {
-    Geolocation.getCurrentPosition(
-      (info) => {
-        props.locationSet(info.coords.latitude, info.coords.longitude);
-      },
-      (error) => console.log(error),
-      {enableHighAccuracy: true},
-    );
+    if (permresult === RESULTS.GRANTED) {
+      Geolocation.getCurrentPosition(
+        (info) => {
+          props.locationSet(info.coords.latitude, info.coords.longitude);
+        },
+        (error) => console.log(error),
+        {enableHighAccuracy: true},
+      );
+    } else {
+      request(permission);
+    }
   };
+
+  useEffect(() => {
+    // Podczas wywołania sprawdza czy aplikacja posiada potrzebujące pozwolenia
+    check(permission).then((status) => {
+      setPermresult(status);
+    });
+  });
 
   return (
     <View>
