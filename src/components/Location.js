@@ -20,12 +20,10 @@ const Location = (props) => {
           props.locationSet(info.coords.latitude, info.coords.longitude);
         },
         (error) => console.log(error),
-        {enableHighAccuracy: false},
+        {enableHighAccuracy: true},
       );
     } else {
-      request(permission).then((permission) => {
-        setPermresult(permission);
-      });
+      request(permission);
     }
   };
 
