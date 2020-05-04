@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {StyleSheet, View, Dimensions, Button} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Dimensions,
+  Button,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 
 import CityHeader from '../components/CityHeader';
 import Location from '../components/Location';
@@ -35,6 +42,13 @@ const Main = ({navigation}) => {
 
   return (
     <View style={styles.flexTape}>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.openDrawer();
+        }}>
+        <Image style={styles.drawer} source={require('../img/menu.png')} />
+      </TouchableOpacity>
+
       <ScrollView>
         <View style={styles.mainView}>
           <View style={styles.topBar}>
@@ -114,6 +128,10 @@ const styles = StyleSheet.create({
     borderBottomColor: '#8d8d8d',
     borderBottomWidth: 1,
     marginHorizontal: 20,
+  },
+  drawer: {
+    width: 40,
+    height: 40,
   },
 });
 
