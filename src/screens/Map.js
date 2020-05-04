@@ -8,6 +8,7 @@ import {
   FlatList,
 } from 'react-native';
 import {WebView} from 'react-native-webview';
+import Slider from '@react-native-community/slider';
 import html_map from '../components/WeatherMap';
 
 const DATA = [
@@ -39,6 +40,7 @@ const DATA = [
 
 const Map = ({navigation}) => {
   const [layer = 0, setLayer] = useState();
+  const [zoom = 9, setZoom] = useState();
   const latitude = 51.5;
   const longitude = -0.12;
 
@@ -68,8 +70,18 @@ const Map = ({navigation}) => {
           keyExtractor={(item) => item.id}
         />
       </View>
-
-      <WebView source={{html: html_map(latitude, longitude, 5, layer)}} />
+      <Slider
+        style={{width: '100%', height: 40}}
+        value={zoom}
+        minimumValue={1}
+        maximumValue={18}
+        minimumTrackTintColor="#FFFFFF"
+        maximumTrackTintColor="#000000"
+        onValueChange={(sliderValue) => setZoom(sliderValue)}
+        step={1}
+        thumbTintColor="dodgerblue"
+      />
+      <WebView source={{html: html_map(latitude, longitude, zoom, layer)}} />
     </>
   );
 };
@@ -86,7 +98,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 8,
   },
   title: {
-    fontSize: 28,
+    fontSize: 18,
   },
 });
 

@@ -25,7 +25,7 @@ const html_map = (lat, lon, zoom, layer) => `
 	
 </head>
 <body>
-<div id="mapid" style="width: 100wh; height: 100vh;"></div>
+<div id="mapid" style="width: 100wh; height: 96vh;"></div>
 <script>
 	var mymap = L.map('mapid').setView([${lat}, ${lon}], ${zoom});
 	L.tileLayer('${layers[layer]}', {
