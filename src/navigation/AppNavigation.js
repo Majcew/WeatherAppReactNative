@@ -5,6 +5,7 @@ import {createDrawerNavigator} from 'react-navigation-drawer';
 
 import Main from '../screens/Main';
 import About from '../screens/About';
+import Map from '../screens/Map';
 
 const AppNavigator = createDrawerNavigator({
   Weather: {
@@ -17,6 +18,12 @@ const AppNavigator = createDrawerNavigator({
     screen: About,
     navigationOptions: {
       drawerLabel: 'About',
+    },
+  },
+  Map: {
+    screen: Map,
+    navigationOptions: {
+      drawerLabel: 'Map',
     },
   },
 });
