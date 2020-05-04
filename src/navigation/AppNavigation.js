@@ -14,16 +14,16 @@ const AppNavigator = createDrawerNavigator({
       drawerLabel: 'Wheater',
     },
   },
-  About: {
-    screen: About,
-    navigationOptions: {
-      drawerLabel: 'About',
-    },
-  },
   Map: {
     screen: Map,
     navigationOptions: {
       drawerLabel: 'Map',
+    },
+  },
+  About: {
+    screen: About,
+    navigationOptions: {
+      drawerLabel: 'About',
     },
   },
 });

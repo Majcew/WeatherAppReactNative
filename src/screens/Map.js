@@ -1,7 +1,12 @@
 import React, {Component} from 'react';
 import {View, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
+import {WebView} from 'react-native-webview';
+import html_map from '../components/WeatherMap';
 
 const Map = ({navigation}) => {
+  console.log(navigation);
+  const latitude = 53;
+  const longitude = 0;
   return (
     <>
       <TouchableOpacity
@@ -10,7 +15,7 @@ const Map = ({navigation}) => {
         }}>
         <Image style={styles.drawer} source={require('../img/menu.png')} />
       </TouchableOpacity>
-      <Text>Mapka kurła</Text>
+      <WebView source={{html: html_map(latitude, longitude, 13, 1)}} />
     </>
   );
 };
