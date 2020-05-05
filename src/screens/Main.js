@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {
+  Text,
   StyleSheet,
   View,
   Dimensions,
@@ -19,7 +20,6 @@ const Main = ({navigation}) => {
   const [weather, setWeather] = useState();
   const [latitude, setlatitude] = useState();
   const [longitude, setLongitude] = useState();
-
 
   const getWeatherCityNameHandler = async (cityName) => {
     try {
@@ -47,13 +47,6 @@ const Main = ({navigation}) => {
 
   return (
     <View style={styles.flexTape}>
-      <TouchableOpacity
-        onPress={() => {
-          navigation.openDrawer();
-        }}>
-        <Image style={styles.drawer} source={require('../img/menu.png')} />
-      </TouchableOpacity>
-
       <ScrollView>
         <View style={styles.mainView}>
           <View style={styles.topBar}>
@@ -88,7 +81,8 @@ const Main = ({navigation}) => {
                   lat: weather?.coord?.lat,
                   lon: weather?.coord?.lon,
                 })
-              }></Button>
+              }
+            />
           </View>
         </View>
       </ScrollView>
@@ -145,3 +139,14 @@ const styles = StyleSheet.create({
 });
 
 export default Main;
+
+Main.navigationOptions = ({navigation}) => ({
+  headerRight: (
+    <TouchableOpacity
+      onPress={() => {
+        navigation.openDrawer();
+      }}>
+      <Image style={styles.drawer} source={require('../img/menu.png')} />
+    </TouchableOpacity>
+  ),
+});
