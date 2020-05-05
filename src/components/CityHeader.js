@@ -32,7 +32,6 @@ const CityHeader = (props) => {
         onChangeText={(text) => onChangeText(text)}
         onSubmitEditing={toggleInput}
       />
-      
     </View>
   );
 };
@@ -41,7 +40,7 @@ const styles = StyleSheet.create({
   headerContainer: {
     flexGrow: 1,
     justifyContent: 'center',
-    backgroundColor:'red'
+    backgroundColor: 'red',
   },
   inputCity: {
     fontSize: 18,
@@ -49,7 +48,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderBottomWidth: 0.15,
   },
-  
 });
 
 export default CityHeader;

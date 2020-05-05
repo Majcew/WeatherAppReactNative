@@ -41,6 +41,7 @@ const WeatherForecast = ({navigation}) => {
             <Image
               style={styles.weatherImage}
               source={WeatherImage(item.weather[0].main)}
+              d
             />
             <Text style={styles.weaterDescription}>{item.weather[0].main}</Text>
             <View style={styles.temperatures}>
