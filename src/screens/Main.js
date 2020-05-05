@@ -1,7 +1,15 @@
-import React, {useEffect, useState} from 'react';
-import {StyleSheet, View, Image, Dimensions, Text, Button} from 'react-native';
+import React, {useState} from 'react';
+import {
+  StyleSheet,
+  View,
+  Dimensions,
+  Button,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 
 import CityHeader from '../components/CityHeader';
+import Location from '../components/Location';
 import * as API from '../utils/API';
 import {ScrollView} from 'react-native-gesture-handler';
 import DetailsBar from '../components/DetailsBar';
@@ -11,6 +19,7 @@ const Main = ({navigation}) => {
   const [weather, setWeather] = useState();
   const [latitude, setlatitude] = useState();
   const [longitude, setLongitude] = useState();
+
 
   const getWeatherCityNameHandler = async (cityName) => {
     try {
@@ -22,9 +31,29 @@ const Main = ({navigation}) => {
       }
     } catch (err) {}
   };
+  const getWeatherFromCoords = async (latitude, longitude) => {
+    try {
+      const fetchedWeather = await API.getWeatherFromCoords(
+        latitude,
+        longitude,
+      );
+      //const fetchedWeather = await API.getAllInOne(latitude, longitude);
+      if (fetchedWeather) {
+        console.log(fetchedWeather);
+        setWeather(fetchedWeather);
+      }
+    } catch (err) {}
+  };
 
   return (
-    <View style={{flex: 1}}>
+    <View style={styles.flexTape}>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.openDrawer();
+        }}>
+        <Image style={styles.drawer} source={require('../img/menu.png')} />
+      </TouchableOpacity>
+
       <ScrollView>
         <View style={styles.mainView}>
           <View style={styles.topBar}>
@@ -32,13 +61,9 @@ const Main = ({navigation}) => {
               city={weather?.name}
               getWeatherCityName={getWeatherCityNameHandler}
             />
-            <Image
+            <Location
               style={styles.iconTopBar}
-              source={require('../img/icongps.png')}
-            />
-            <Image
-              style={styles.iconTopBar}
-              source={require('../img/iconsearch.png')}
+              locationSet={getWeatherFromCoords}
             />
           </View>
           <BasicWeather
@@ -55,9 +80,9 @@ const Main = ({navigation}) => {
             airPressure={weather?.main?.pressure}
             humidity={weather?.main?.humidity}
           />
-          <View style={{marginHorizontal: 20, marginTop: 40}}>
+          <View style={styles.aboutButton}>
             <Button
-              title="Przechodzi do Pokoju twojej starej"
+              title="Przechodzi do WeatherFragment"
               onPress={() =>
                 navigation.navigate('WeatherForecast', {
                   lat: weather?.coord?.lat,
@@ -72,6 +97,9 @@ const Main = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
+  flexTape: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     backgroundColor: '#0032b4',
@@ -94,6 +122,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderBottomWidth: 0.15,
   },
+  aboutButton: {
+    marginHorizontal: 20,
+    marginTop: 40,
+  },
   iconTopBar: {
     width: 25,
     height: 25,
@@ -105,6 +137,10 @@ const styles = StyleSheet.create({
     borderBottomColor: '#8d8d8d',
     borderBottomWidth: 1,
     marginHorizontal: 20,
+  },
+  drawer: {
+    width: 40,
+    height: 40,
   },
 });
 
