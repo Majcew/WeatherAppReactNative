@@ -17,12 +17,17 @@ import BasicWeather from '../components/BasicWeather';
 
 const Main = ({navigation}) => {
   const [weather, setWeather] = useState();
+  const [latitude, setlatitude] = useState();
+  const [longitude, setLongitude] = useState();
+
 
   const getWeatherCityNameHandler = async (cityName) => {
     try {
       const fetchedWeather = await API.getWeatherCityName(cityName);
       if (fetchedWeather) {
         setWeather(fetchedWeather);
+        setlatitude(weather?.coord?.lat);
+        setLongitude(weather?.coord?.lon);
       }
     } catch (err) {}
   };
@@ -77,9 +82,13 @@ const Main = ({navigation}) => {
           />
           <View style={styles.aboutButton}>
             <Button
-              title="Przechodzi do About"
-              onPress={() => navigation.navigate('About')}
-            />
+              title="Przechodzi do WeatherFragment"
+              onPress={() =>
+                navigation.navigate('WeatherForecast', {
+                  lat: weather?.coord?.lat,
+                  lon: weather?.coord?.lon,
+                })
+              }></Button>
           </View>
         </View>
       </ScrollView>

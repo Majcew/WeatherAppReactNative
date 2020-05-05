@@ -5,6 +5,7 @@ import {createDrawerNavigator} from 'react-navigation-drawer';
 
 import Main from '../screens/Main';
 import About from '../screens/About';
+import WeatherForecast from '../screens/WeaterForecast'
 import Map from '../screens/Map';
 
 const AppNavigator = createDrawerNavigator({
@@ -14,10 +15,16 @@ const AppNavigator = createDrawerNavigator({
       drawerLabel: 'Wheater',
     },
   },
+
   Map: {
     screen: Map,
     navigationOptions: {
       drawerLabel: 'Map',
+    },
+  WeatherForecast: {
+    screen: WeatherForecast,
+    navigationOptions: {
+      drawerLabel: 'WeatherForecast',
     },
   },
   About: {
