@@ -1,13 +1,12 @@
-import React, {Component, useState, useEffect} from 'react';
-import {View, Text, FlatList, StyleSheet, Image} from 'react-native';
+import React, {Component, useState, useEffect, forceUpdate} from 'react';
+import {View, Text, FlatList, StyleSheet, Image, Button} from 'react-native';
 import * as API from '../utils/API';
 import moment from 'moment';
 import WeatherImage from '../components/WeatherImage';
 
 const WeatherForecast = ({navigation}) => {
-  const [latitude, setlatitude] = useState();
-  const [longitude, setlongitude] = useState();
   const [forecast, setForecast] = useState();
+  const [ready, setready] = useState(false);
 
   const getAllInOne = async (latitude, longitude) => {
     try {
@@ -17,47 +16,62 @@ const WeatherForecast = ({navigation}) => {
       }
     } catch (err) {}
   };
+
   useEffect(() => {
-    setlatitude(navigation.getParam('lat', 'twoja stara'));
-    setlongitude(navigation.getParam('lon', 'twoja babcia'));
-    getAllInOne(latitude, longitude);
+    getAllInOne(navigation.getParam('lat', 50), navigation.getParam('lon', 10));
+    setTimeout(handleLoading, 1000);
   }, []);
 
-  return (
-    <View>
-      <FlatList
-        data={forecast}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({item}) => (
-          <View style={styles.listRow}>
-            <View style={styles.dateTime}>
-              <Text style={styles.day}>
-                {moment(item.dt * 1000 + 2 * 3600 * 1000).format('ddd')}
+  const handleLoading = () => {
+    setready(true);
+  };
+
+  if (!ready) {
+    return (
+      <View>
+        <Text>Laduje się (moze byc jakis obrazek ladowania)</Text>
+      </View>
+    );
+  } else
+    return (
+      <View>
+        <FlatList
+          data={forecast}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({item}) => (
+            <View style={styles.listRow}>
+              <View style={styles.dateTime}>
+                <Text style={styles.day}>
+                  {moment(item.dt * 1000 + 2 * 3600 * 1000).format('ddd')}
+                </Text>
+                <Text style={styles.date}>
+                  {moment(item.dt * 1000 + 2 * 3600 * 1000).format(
+                    'DD.MM.YYYY',
+                  )}
+                </Text>
+              </View>
+              <Image
+                style={styles.weatherImage}
+                source={WeatherImage(item.weather[0].main)}
+                d
+              />
+              <Text style={styles.weaterDescription}>
+                {item.weather[0].main}
               </Text>
-              <Text style={styles.date}>
-                {moment(item.dt * 1000 + 2 * 3600 * 1000).format('DD.MM.YYYY')}
-              </Text>
+              <View style={styles.temperatures}>
+                <Text style={styles.temperatureDay}>
+                  {Math.round(item.temp.day) + '\u00B0'}
+                </Text>
+                <View style={styles.horizontalLine} />
+                <Text style={styles.temperatureNight}>
+                  {Math.round(item.temp.night)}
+                </Text>
+              </View>
             </View>
-            <Image
-              style={styles.weatherImage}
-              source={WeatherImage(item.weather[0].main)}
-              d
-            />
-            <Text style={styles.weaterDescription}>{item.weather[0].main}</Text>
-            <View style={styles.temperatures}>
-              <Text style={styles.temperatureDay}>
-                {Math.round(item.temp.day) + '\u00B0'}
-              </Text>
-              <View style={styles.horizontalLine} />
-              <Text style={styles.temperatureNight}>
-                {Math.round(item.temp.night)}
-              </Text>
-            </View>
-          </View>
-        )}
-      />
-    </View>
-  );
+          )}
+        />
+      </View>
+    );
 };
 
 const styles = StyleSheet.create({
