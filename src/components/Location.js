@@ -38,7 +38,7 @@ const Location = (props) => {
 
   return (
     <View>
-      <TouchableOpacity style={styles.icon} onPress={getLocationCoords}>
+      <TouchableOpacity style={styles.iconposition} onPress={getLocationCoords}>
         <Image style={styles.icon} source={require('../img/icongps.png')} />
       </TouchableOpacity>
     </View>
@@ -46,9 +46,14 @@ const Location = (props) => {
 };
 
 const styles = StyleSheet.create({
+  iconposition:{
+    marginTop: 12,
+    marginHorizontal: 5,
+  },
   icon: {
-    width: 25,
-    height: 25,
+    width: 24,
+    height: 24,
+    
   },
 });
 
