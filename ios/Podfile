@@ -74,9 +74,7 @@ target 'iosWeatherApp' do
   pod 'Permission-StoreKit', :path => "#{permissions_path}/StoreKit.podspec"
 
 
-  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
 
-  pod 'react-native-slider', :path => '../node_modules/@react-native-community/slider'
 
   target 'iosWeatherAppTests' do
     inherit! :complete
