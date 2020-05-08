@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {
   Text,
   StyleSheet,
@@ -15,19 +15,22 @@ import * as API from '../utils/API';
 import {ScrollView} from 'react-native-gesture-handler';
 import DetailsBar from '../components/DetailsBar';
 import BasicWeather from '../components/BasicWeather';
+import {CurrentCoords} from '../context/Coords';
 
 const Main = ({navigation}) => {
   const [weather, setWeather] = useState();
   const [latitude, setlatitude] = useState();
   const [longitude, setLongitude] = useState();
+  const [currentCoords, setCurrentCoords] = useContext(CurrentCoords);
 
   const getWeatherCityNameHandler = async (cityName) => {
     try {
       const fetchedWeather = await API.getWeatherCityName(cityName);
       if (fetchedWeather) {
         setWeather(fetchedWeather);
-        setlatitude(weather?.coord?.lat);
-        setLongitude(weather?.coord?.lon);
+        setlatitude(fetchedWeather?.coord?.lat);
+        setLongitude(fetchedWeather?.coord?.lon);
+        setCurrentCoords(fetchedWeather?.coord);
       }
     } catch (err) {}
   };
@@ -41,6 +44,7 @@ const Main = ({navigation}) => {
       if (fetchedWeather) {
         console.log(fetchedWeather);
         setWeather(fetchedWeather);
+        setCurrentCoords({lat: latitude, lon: longitude});
       }
     } catch (err) {}
   };

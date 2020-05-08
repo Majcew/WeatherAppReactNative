@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {
   View,
   Text,
@@ -10,6 +10,7 @@ import {
 import {WebView} from 'react-native-webview';
 import Slider from '@react-native-community/slider';
 import html_map from '../components/WeatherMap';
+import {CurrentCoords} from '../context/Coords';
 
 const DATA = [
   {
@@ -39,15 +40,20 @@ const DATA = [
 ];
 
 const Map = ({navigation}) => {
+  const [currentCoords, setCurrentCoords] = useContext(CurrentCoords);
   const [layer = 0, setLayer] = useState();
   const [zoom = 9, setZoom] = useState();
-  const latitude = 51.5;
-  const longitude = -0.12;
+  const latitude = currentCoords.lat;
+  const longitude = currentCoords.lon;
 
   function Item({item}) {
     return (
       <View style={styles.item}>
-        <Text style={styles.title} onPress={() => setLayer(item.id)}>
+        <Text
+          style={styles.title}
+          onPress={() => {
+            setLayer(item.id);
+          }}>
           {item.title}
         </Text>
       </View>
@@ -56,12 +62,6 @@ const Map = ({navigation}) => {
 
   return (
     <>
-      <TouchableOpacity
-        onPress={() => {
-          navigation.openDrawer();
-        }}>
-        <Image style={styles.drawer} source={require('../img/menu.png')} />
-      </TouchableOpacity>
       <View>
         <FlatList
           horizontal

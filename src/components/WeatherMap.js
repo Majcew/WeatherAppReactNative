@@ -9,6 +9,12 @@ const layers = [
   url_prefix + 'precipitation_new' + url_sufix + api_key,
   url_prefix + 'wind_new' + url_sufix + api_key,
 ];
+const layersOwner = [
+  ['Mapbox', 'https://www.mapbox.com/'],
+  ['OpenWeather', 'https://openweathermap.org/'],
+];
+// Obejście nieumiejętności przypisania wartości poniżej, do zmiany!!
+const layersOwnerIndex = [0, 1, 1, 1, 1, 1, 1, 1];
 
 const html_map = (lat, lon, zoom, layer) => `
 <!DOCTYPE html>
@@ -33,7 +39,9 @@ const html_map = (lat, lon, zoom, layer) => `
         minZoom: ${zoom},
 		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
 			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+			'Imagery © <a href=${layersOwner[layersOwnerIndex[layer]][1]}>${
+  layersOwner[layersOwnerIndex[layer]][0]
+}</a>',
 		id: 'mapbox/streets-v11',
         tileSize: 512,
         zoomOffset: -1
@@ -41,6 +49,8 @@ const html_map = (lat, lon, zoom, layer) => `
 	L.marker([${lat}, ${lon}]).addTo(mymap)
 		.bindPopup("<b>I'm here</b><br />lat:${lat}<br />lon:${lon}").openPopup();
 	
+	//var popup = L.popup();
+
 	function onMapClick(e) {
 		popup
 			.setLatLng(e.latlng)
