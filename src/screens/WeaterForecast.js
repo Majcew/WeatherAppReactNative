@@ -41,7 +41,8 @@ const WeatherForecast = ({navigation}) => {
           data={forecast}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => (
-            <View style={styles.listRow_dark}>
+            <View
+              style={[styles.listRow, {backgroundColor: colors.background}]}>
               <View style={styles.dateTime}>
                 <Text style={styles.day_dark}>
                   {moment(item.dt * 1000 + 2 * 3600 * 1000).format('ddd')}
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   listRow: {
-    backgroundColor: 'black',
+    backgroundColor: 'white',
     height: 80,
     borderRadius: 4,
     margin: 5,
