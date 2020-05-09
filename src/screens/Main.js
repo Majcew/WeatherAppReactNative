@@ -16,12 +16,14 @@ import {ScrollView} from 'react-native-gesture-handler';
 import DetailsBar from '../components/DetailsBar';
 import BasicWeather from '../components/BasicWeather';
 import {CurrentCoords} from '../context/Coords';
+import {useTheme} from '@react-navigation/native';
 
 const Main = ({navigation}) => {
   const [weather, setWeather] = useState();
   const [latitude, setlatitude] = useState();
   const [longitude, setLongitude] = useState();
   const [currentCoords, setCurrentCoords] = useContext(CurrentCoords);
+  const {colors} = useTheme();
 
   const getWeatherCityNameHandler = async (cityName) => {
     try {
@@ -52,7 +54,7 @@ const Main = ({navigation}) => {
   return (
     <View style={styles.flexTape}>
       <ScrollView>
-        <View style={styles.mainView}>
+        <View style={(styles.mainView, {backgroundColor: colors.background})}>
           <View style={styles.topBar}>
             <CityHeader
               city={weather?.name}
@@ -104,7 +106,6 @@ const styles = StyleSheet.create({
   },
   mainView: {
     height: Dimensions.get('window').height,
-    backgroundColor: 'white',
   },
   topBar: {
     flexDirection: 'row',

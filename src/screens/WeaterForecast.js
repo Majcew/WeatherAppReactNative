@@ -3,10 +3,12 @@ import {View, Text, FlatList, StyleSheet, Image, Button} from 'react-native';
 import * as API from '../utils/API';
 import moment from 'moment';
 import WeatherImage from '../components/WeatherImage';
+import {useTheme} from '@react-navigation/native';
 
 const WeatherForecast = ({navigation}) => {
   const [forecast, setForecast] = useState();
   const [ready, setready] = useState(false);
+  const {colors} = useTheme();
 
   const getAllInOne = async (latitude, longitude) => {
     try {
@@ -34,17 +36,17 @@ const WeatherForecast = ({navigation}) => {
     );
   } else
     return (
-      <View>
+      <View style={{backgroundColor: colors.background}}>
         <FlatList
           data={forecast}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => (
-            <View style={styles.listRow}>
+            <View style={styles.listRow_dark}>
               <View style={styles.dateTime}>
-                <Text style={styles.day}>
+                <Text style={styles.day_dark}>
                   {moment(item.dt * 1000 + 2 * 3600 * 1000).format('ddd')}
                 </Text>
-                <Text style={styles.date}>
+                <Text style={styles.date_dark}>
                   {moment(item.dt * 1000 + 2 * 3600 * 1000).format(
                     'DD.MM.YYYY',
                   )}
@@ -55,15 +57,15 @@ const WeatherForecast = ({navigation}) => {
                 source={WeatherImage(item.weather[0].main)}
                 d
               />
-              <Text style={styles.weaterDescription}>
+              <Text style={styles.weaterDescription_dark}>
                 {item.weather[0].main}
               </Text>
               <View style={styles.temperatures}>
-                <Text style={styles.temperatureDay}>
+                <Text style={styles.temperatureDay_dark}>
                   {Math.round(item.temp.day) + '\u00B0'}
                 </Text>
                 <View style={styles.horizontalLine} />
-                <Text style={styles.temperatureNight}>
+                <Text style={styles.temperatureNight_dark}>
                   {Math.round(item.temp.night)}
                 </Text>
               </View>
@@ -80,7 +82,17 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   listRow: {
-    backgroundColor: 'white',
+    backgroundColor: 'black',
+    height: 80,
+    borderRadius: 4,
+    margin: 5,
+    elevation: 2,
+    flex: 1,
+    flexDirection: 'row',
+    marginHorizontal: 8,
+  },
+  listRow_dark: {
+    backgroundColor: 'black',
     height: 80,
     borderRadius: 4,
     margin: 5,
@@ -99,19 +111,35 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#484848',
   },
+  day_dark: {
+    textAlign: 'center',
+    fontSize: 20,
+    color: 'white',
+  },
   date: {
     color: '#484848',
+  },
+  date_dark: {
+    color: 'white',
   },
   weatherImage: {
     width: 68,
     height: 68,
     margin: 5,
     marginHorizontal: 10,
+    backgroundColor: 'white',
   },
   weaterDescription: {
     alignSelf: 'center',
     marginHorizontal: 10,
     color: '#484848',
+    fontSize: 20,
+    flex: 1,
+  },
+  weaterDescription_dark: {
+    alignSelf: 'center',
+    marginHorizontal: 10,
+    color: 'white',
     fontSize: 20,
     flex: 1,
   },
@@ -125,13 +153,23 @@ const styles = StyleSheet.create({
     fontSize: 26,
     textAlign: 'center',
   },
+  temperatureDay_dark: {
+    fontSize: 26,
+    textAlign: 'center',
+    color: 'white',
+  },
   temperatureNight: {
     fontSize: 18,
     color: '#484848',
     textAlign: 'center',
   },
+  temperatureNight_dark: {
+    fontSize: 18,
+    color: 'white',
+    textAlign: 'center',
+  },
   horizontalLine: {
-    borderBottomColor: 'black',
+    borderBottomColor: 'white',
     borderBottomWidth: 1,
   },
 });
