@@ -1,12 +1,16 @@
-import React, {Component, useState, useEffect, forceUpdate} from 'react';
+import React, {Component, useState, useEffect, forceUpdate,useContext} from 'react';
 import {View, Text, FlatList, StyleSheet, Image, Button} from 'react-native';
 import * as API from '../utils/API';
 import moment from 'moment';
 import WeatherImage from '../components/WeatherImage';
+import {CurrentCoords} from '../context/Coords';
 
 const WeatherForecast = ({navigation}) => {
   const [forecast, setForecast] = useState();
   const [ready, setready] = useState(false);
+  const [currentCoords, setCurrentCoords] = useContext(CurrentCoords);
+  const latitude = currentCoords.lat;
+  const longitude = currentCoords.lon;
 
   const getAllInOne = async (latitude, longitude) => {
     try {
@@ -18,7 +22,8 @@ const WeatherForecast = ({navigation}) => {
   };
 
   useEffect(() => {
-    getAllInOne(navigation.getParam('lat', 50), navigation.getParam('lon', 10));
+    //getAllInOne(navigation.getParam('lat', 50), navigation.getParam('lon', 10));
+    getAllInOne(latitude, longitude);
     setTimeout(handleLoading, 1000);
   }, []);
 
