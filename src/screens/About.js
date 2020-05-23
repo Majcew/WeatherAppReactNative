@@ -20,9 +20,21 @@ const About = ({navigation}) => {
 
 const styles = StyleSheet.create({
   drawer: {
-    width: 40,
-    height: 40,
+    marginRight: 10,
+    width: 30,
+    height: 30,
   },
+});
+
+About.navigationOptions = ({navigation}) => ({
+  headerRight: (
+    <TouchableOpacity
+      onPress={() => {
+        navigation.openDrawer();
+      }}>
+      <Image style={styles.drawer} source={require('../img/menu.png')} />
+    </TouchableOpacity>
+  ),
 });
 
 export default About;

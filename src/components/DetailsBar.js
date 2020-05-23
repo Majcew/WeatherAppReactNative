@@ -23,7 +23,7 @@ const DetailsBar = (props) => {
   return (
     <View style={styles.iconBox}>
       <View>
-        <View style={styles.box1}>
+        <View style={styles.iconSunsetup}>
           <Image
             style={styles.iconInSquare}
             source={require('../img/sunsetup.png')}
@@ -32,7 +32,7 @@ const DetailsBar = (props) => {
         <Text style={styles.centerText}>{sunriseTime}</Text>
       </View>
       <View>
-        <View style={styles.box2}>
+        <View style={styles.iconSunsetdown}>
           <Image
             style={styles.iconInSquare}
             source={require('../img/sunsetdown.png')}
@@ -41,7 +41,7 @@ const DetailsBar = (props) => {
         <Text style={styles.centerText}>{sunsetTime}</Text>
       </View>
       <View>
-        <View style={styles.box3}>
+        <View style={styles.iconSquare}>
           <Image
             style={styles.iconInSquare}
             source={require('../img/hpa.png')}
@@ -50,7 +50,7 @@ const DetailsBar = (props) => {
         <Text style={styles.centerText}>{airPressure}</Text>
       </View>
       <View>
-        <View style={styles.box4}>
+        <View style={styles.iconHumidity}>
           <Image
             style={styles.iconInSquare}
             source={require('../img/humidity.png')}
@@ -70,33 +70,33 @@ const styles = StyleSheet.create({
     marginTop: 6,
   },
   iconBox: {
-    marginTop: 25,
-    marginHorizontal: 5,
+    marginVertical: 60,
+    marginHorizontal: 10,
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
   centerText: {
     textAlign: 'center',
   },
-  box1: {
+  iconSunsetup: {
     width: 50,
     height: 50,
     backgroundColor: 'rgb(10, 132, 255)',
     borderRadius: 4,
   },
-  box2: {
+  iconSunsetdown: {
     width: 50,
     height: 50,
     backgroundColor: 'rgb(48, 209, 88)',
     borderRadius: 4,
   },
-  box3: {
+  iconSquare: {
     width: 50,
     height: 50,
     backgroundColor: 'rgb(94, 92, 230)',
     borderRadius: 4,
   },
-  box4: {
+  iconHumidity: {
     width: 50,
     height: 50,
     backgroundColor: 'rgb(255, 159, 10)',

@@ -46,14 +46,13 @@ const Location = (props) => {
 };
 
 const styles = StyleSheet.create({
-  iconposition:{
+  iconposition: {
     marginTop: 12,
     marginHorizontal: 5,
   },
   icon: {
     width: 24,
     height: 24,
-    
   },
 });
 

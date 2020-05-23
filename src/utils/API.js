@@ -6,8 +6,11 @@ export const getWeatherCityName = async (cityName) => {
       API.baseURL + `q=${cityName}` + API.API_KEY + '&units=metric',
     );
     const json = await response.json();
+    console.log('API: ', json);
     return json;
-  } catch (err) {}
+  } catch (err) {
+    console.log('Nie ma');
+  }
 };
 export const getWeatherFromCoords = async (latitude, longitude) => {
   try {

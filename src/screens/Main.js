@@ -1,21 +1,20 @@
 import React, {useState, useContext} from 'react';
 import {
-  Text,
   StyleSheet,
   View,
   Dimensions,
-  Button,
   Image,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 
 import CityHeader from '../components/CityHeader';
 import Location from '../components/Location';
 import * as API from '../utils/API';
-import {ScrollView} from 'react-native-gesture-handler';
 import DetailsBar from '../components/DetailsBar';
 import BasicWeather from '../components/BasicWeather';
 import {CurrentCoords} from '../context/Coords';
+import {ScrollView} from 'react-native-gesture-handler';
 
 const Main = ({navigation}) => {
   const [weather, setWeather] = useState();
@@ -26,11 +25,13 @@ const Main = ({navigation}) => {
   const getWeatherCityNameHandler = async (cityName) => {
     try {
       const fetchedWeather = await API.getWeatherCityName(cityName);
-      if (fetchedWeather) {
+      if (fetchedWeather && fetchedWeather.cod === 200) {
         setWeather(fetchedWeather);
         setlatitude(fetchedWeather?.coord?.lat);
         setLongitude(fetchedWeather?.coord?.lon);
         setCurrentCoords(fetchedWeather?.coord);
+      } else {
+        Alert.alert('The city does not exist');
       }
     } catch (err) {}
   };
@@ -54,6 +55,7 @@ const Main = ({navigation}) => {
       <ScrollView>
         <View style={styles.mainView}>
           <View style={styles.topBar}>
+            {console.log(weather?.name)}
             <CityHeader
               city={weather?.name}
               getWeatherCityName={getWeatherCityNameHandler}
@@ -77,17 +79,6 @@ const Main = ({navigation}) => {
             airPressure={weather?.main?.pressure}
             humidity={weather?.main?.humidity}
           />
-          <View style={styles.aboutButton}>
-            <Button
-              title="Przechodzi do WeatherFragment"
-              onPress={() =>
-                navigation.navigate('WeatherForecast', {
-                  lat: weather?.coord?.lat,
-                  lon: weather?.coord?.lon,
-                })
-              }
-            />
-          </View>
         </View>
       </ScrollView>
     </View>
@@ -103,13 +94,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#0032b4',
   },
   mainView: {
-    height: Dimensions.get('window').height,
+    height: '100%',
     backgroundColor: 'white',
   },
   topBar: {
     flexDirection: 'row',
     marginHorizontal: 20,
-    marginVertical: 20,
+    marginVertical: 30,
     paddingLeft: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#8d8d8d',
@@ -130,15 +121,15 @@ const styles = StyleSheet.create({
     marginTop: 8,
     marginHorizontal: 5,
   },
-
   horizontalLine: {
     borderBottomColor: '#8d8d8d',
     borderBottomWidth: 1,
     marginHorizontal: 20,
   },
   drawer: {
-    width: 40,
-    height: 40,
+    marginRight: 10,
+    width: 30,
+    height: 30,
   },
 });
 
