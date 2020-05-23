@@ -29,7 +29,7 @@ const CityHeader = (props) => {
         underlineColorAndroid="rgba(0,0,0,0)"
         placeholder="City"
         placeholderTextColor="black"
-        value={city}
+        value={city ? city : ''}
         onChangeText={(text) => {
           if (hasNumber(text) || hasSpecialCharacter(text)) {
             return;
