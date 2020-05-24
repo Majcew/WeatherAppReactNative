@@ -87,10 +87,6 @@ const Map = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-  drawer: {
-    width: 40,
-    height: 40,
-  },
   item: {
     backgroundColor: 'dodgerblue',
     padding: 15,
@@ -100,6 +96,22 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
   },
+  drawer: {
+    marginRight: 10,
+    width: 30,
+    height: 30,
+  },
+});
+
+Map.navigationOptions = ({navigation}) => ({
+  headerRight: (
+    <TouchableOpacity
+      onPress={() => {
+        navigation.openDrawer();
+      }}>
+      <Image style={styles.drawer} source={require('../img/menu.png')} />
+    </TouchableOpacity>
+  ),
 });
 
 export default Map;

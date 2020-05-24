@@ -1,5 +1,12 @@
-import React, {Component, useState, useEffect, forceUpdate,useContext} from 'react';
-import {View, Text, FlatList, StyleSheet, Image, Button} from 'react-native';
+import React, {useState, useEffect, useContext} from 'react';
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import * as API from '../utils/API';
 import moment from 'moment';
 import WeatherImage from '../components/WeatherImage';
@@ -139,6 +146,22 @@ const styles = StyleSheet.create({
     borderBottomColor: 'black',
     borderBottomWidth: 1,
   },
+  drawer: {
+    marginRight: 10,
+    width: 30,
+    height: 30,
+  },
+});
+
+WeatherForecast.navigationOptions = ({navigation}) => ({
+  headerRight: (
+    <TouchableOpacity
+      onPress={() => {
+        navigation.openDrawer();
+      }}>
+      <Image style={styles.drawer} source={require('../img/menu.png')} />
+    </TouchableOpacity>
+  ),
 });
 
 export default WeatherForecast;

@@ -1,12 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  TextInput,
-  Keyboard,
-} from 'react-native';
+import {View, StyleSheet, TextInput} from 'react-native';
 
 const CityHeader = (props) => {
   const [city, setCity] = useState(props.city);
@@ -18,9 +11,17 @@ const CityHeader = (props) => {
     props.getWeatherCityName(city);
   };
 
+  const hasNumber = (String) => {
+    return /\d/.test(String);
+  };
+  const hasSpecialCharacter = (string) => {
+    return /[`~?^!*&$%#@,.<>;':\\"\/\[\]\|{}()=_+-]/.test(string);
+  };
+
   useEffect(() => {
     setCity(props.city);
   }, [props.city]);
+
   return (
     <View style={styles.headerContainer}>
       <TextInput
@@ -28,8 +29,13 @@ const CityHeader = (props) => {
         underlineColorAndroid="rgba(0,0,0,0)"
         placeholder="City"
         placeholderTextColor="black"
-        value={city}
-        onChangeText={(text) => onChangeText(text)}
+        value={city ? city : ''}
+        onChangeText={(text) => {
+          if (hasNumber(text) || hasSpecialCharacter(text)) {
+            return;
+          }
+          onChangeText(text);
+        }}
         onSubmitEditing={toggleInput}
       />
     </View>
@@ -43,7 +49,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
   },
   inputCity: {
-    fontSize: 18,
+    fontSize: 24,
     color: 'black',
     backgroundColor: 'white',
     borderBottomWidth: 0.15,
