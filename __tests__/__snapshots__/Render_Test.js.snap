@@ -1,0 +1,700 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rendering:  Components:  BasicWeather.js Result 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "justifyContent": "center",
+        "marginBottom": 20,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#8d8d8d",
+          "marginBottom": 30,
+        }
+      }
+    >
+      1590249302
+    </Text>
+    <Image
+      source={
+        Object {
+          "testUri": "../../../src/img/cloudy.png",
+        }
+      }
+      style={
+        Object {
+          "backgroundColor": "white",
+          "height": 155,
+          "marginHorizontal": 5,
+          "marginTop": 8,
+          "width": 155,
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "marginHorizontal": 20,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#484848",
+          "fontSize": 48,
+        }
+      }
+    >
+      14.63
+    </Text>
+    <View>
+      <Text
+        style={
+          Object {
+            "fontSize": 24,
+            "marginTop": 0,
+            "paddingLeft": 8,
+          }
+        }
+      >
+        Clouds
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "#8d8d8d",
+            "fontSize": 16,
+            "marginTop": 0,
+            "paddingLeft": 8,
+          }
+        }
+      >
+        overcast clouds
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Rendering:  Components:  CityHeader.js Result  1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "red",
+      "flexGrow": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <TextInput
+    allowFontScaling={true}
+    onChangeText={[Function]}
+    onSubmitEditing={[Function]}
+    placeholder="City"
+    placeholderTextColor="black"
+    rejectResponderTermination={true}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderBottomWidth": 0.15,
+        "color": "black",
+        "fontSize": 18,
+      }
+    }
+    underlineColorAndroid="rgba(0,0,0,0)"
+  />
+</View>
+`;
+
+exports[`Rendering:  Components:  DetailsBar.js Result  1`] = `
+<View
+  style={
+    Object {
+      "flexDirection": "row",
+      "justifyContent": "space-around",
+      "marginHorizontal": 5,
+      "marginTop": 25,
+    }
+  }
+>
+  <View>
+    <View
+      style={
+        Object {
+          "backgroundColor": "rgb(10, 132, 255)",
+          "borderRadius": 4,
+          "height": 50,
+          "width": 50,
+        }
+      }
+    >
+      <Image
+        source={
+          Object {
+            "testUri": "../../../src/img/sunsetup.png",
+          }
+        }
+        style={
+          Object {
+            "height": 35,
+            "marginLeft": 8,
+            "marginTop": 6,
+            "width": 35,
+          }
+        }
+      />
+    </View>
+    <Text
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    />
+  </View>
+  <View>
+    <View
+      style={
+        Object {
+          "backgroundColor": "rgb(48, 209, 88)",
+          "borderRadius": 4,
+          "height": 50,
+          "width": 50,
+        }
+      }
+    >
+      <Image
+        source={
+          Object {
+            "testUri": "../../../src/img/sunsetdown.png",
+          }
+        }
+        style={
+          Object {
+            "height": 35,
+            "marginLeft": 8,
+            "marginTop": 6,
+            "width": 35,
+          }
+        }
+      />
+    </View>
+    <Text
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    />
+  </View>
+  <View>
+    <View
+      style={
+        Object {
+          "backgroundColor": "rgb(94, 92, 230)",
+          "borderRadius": 4,
+          "height": 50,
+          "width": 50,
+        }
+      }
+    >
+      <Image
+        source={
+          Object {
+            "testUri": "../../../src/img/hpa.png",
+          }
+        }
+        style={
+          Object {
+            "height": 35,
+            "marginLeft": 8,
+            "marginTop": 6,
+            "width": 35,
+          }
+        }
+      />
+    </View>
+    <Text
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    />
+  </View>
+  <View>
+    <View
+      style={
+        Object {
+          "backgroundColor": "rgb(255, 159, 10)",
+          "borderRadius": 4,
+          "height": 50,
+          "width": 50,
+        }
+      }
+    >
+      <Image
+        source={
+          Object {
+            "testUri": "../../../src/img/humidity.png",
+          }
+        }
+        style={
+          Object {
+            "height": 35,
+            "marginLeft": 8,
+            "marginTop": 6,
+            "width": 35,
+          }
+        }
+      />
+    </View>
+    <Text
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      undefined %
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Rendering:  Components:  WeatherMap.js Result  1`] = `
+"
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>Quick Start - Leaflet</title>
+	<meta charset=\\"utf-8\\" />
+    <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no\\" />
+	
+	<link rel=\\"shortcut icon\\" type=\\"image/x-icon\\" href=\\"docs/images/favicon.ico\\" />
+    <link rel=\\"stylesheet\\" href=\\"https://unpkg.com/leaflet@1.6.0/dist/leaflet.css\\" integrity=\\"sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==\\" crossorigin=\\"\\"/>
+    <script src=\\"https://unpkg.com/leaflet@1.6.0/dist/leaflet.js\\" integrity=\\"sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==\\" crossorigin=\\"\\"></script>
+	
+</head>
+<body>
+<div id=\\"mapid\\" style=\\"width: 100wh; height: 96vh;\\"></div>
+<script>
+	var mymap = L.map('mapid').setView([[object Object], [object Object]], undefined);
+	L.tileLayer('undefined', {
+        maxZoom: undefined,
+        minZoom: undefined,
+		attribution: 'Map data &copy; <a href=\\"https://www.openstreetmap.org/\\">OpenStreetMap</a> contributors, ' +
+			'<a href=\\"https://creativecommons.org/licenses/by-sa/2.0/\\">CC-BY-SA</a>, ' +
+			'Imagery © <a href=undefined>undefined</a>',
+		id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1
+	}).addTo(mymap);
+	L.marker([[object Object], [object Object]]).addTo(mymap)
+		.bindPopup(\\"<b>I'm here</b><br />lat:[object Object]<br />lon:[object Object]\\").openPopup();
+	
+	//var popup = L.popup();
+
+	function onMapClick(e) {
+		popup
+			.setLatLng(e.latlng)
+			.setContent(\\"You clicked the map at \\" + e.latlng.toString())
+			.openOn(mymap);
+	}
+	mymap.on('click', onMapClick);
+</script>
+</body>
+</html>
+"
+`;
+
+exports[`Rendering:  Screens: About.js Result  1`] = `
+<View>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "testUri": "../../../src/img/menu.png",
+        }
+      }
+      style={
+        Object {
+          "height": 40,
+          "width": 40,
+        }
+      }
+    />
+  </View>
+  <Text>
+    Tutaj będzie bardzo piękny tekst na temat naszej apki (nie wazne w tej chwili)
+  </Text>
+</View>
+`;
+
+exports[`Rendering:  Screens: Map.js Result  1`] = `
+Array [
+  <View>
+    <RCTScrollView
+      data={
+        Array [
+          Object {
+            "id": 0,
+            "title": "Mapa",
+          },
+          Object {
+            "id": 1,
+            "title": "Temperatura",
+          },
+          Object {
+            "id": 2,
+            "title": "Ciśnienie",
+          },
+          Object {
+            "id": 3,
+            "title": "Chmury",
+          },
+          Object {
+            "id": 4,
+            "title": "Opady",
+          },
+          Object {
+            "id": 5,
+            "title": "Wiatr",
+          },
+        ]
+      }
+      disableVirtualization={false}
+      getItem={[Function]}
+      getItemCount={[Function]}
+      horizontal={false}
+      initialNumToRender={10}
+      keyExtractor={[Function]}
+      maxToRenderPerBatch={10}
+      onContentSizeChange={[Function]}
+      onEndReachedThreshold={2}
+      onLayout={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEventThrottle={50}
+      stickyHeaderIndices={Array []}
+      updateCellsBatchingPeriod={50}
+      viewabilityConfigCallbackPairs={Array []}
+      windowSize={21}
+    >
+      <View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "dodgerblue",
+                "marginHorizontal": 8,
+                "marginVertical": 8,
+                "padding": 15,
+              }
+            }
+          >
+            <Text
+              onPress={[Function]}
+              style={
+                Object {
+                  "fontSize": 18,
+                }
+              }
+            >
+              Mapa
+            </Text>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "dodgerblue",
+                "marginHorizontal": 8,
+                "marginVertical": 8,
+                "padding": 15,
+              }
+            }
+          >
+            <Text
+              onPress={[Function]}
+              style={
+                Object {
+                  "fontSize": 18,
+                }
+              }
+            >
+              Temperatura
+            </Text>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "dodgerblue",
+                "marginHorizontal": 8,
+                "marginVertical": 8,
+                "padding": 15,
+              }
+            }
+          >
+            <Text
+              onPress={[Function]}
+              style={
+                Object {
+                  "fontSize": 18,
+                }
+              }
+            >
+              Ciśnienie
+            </Text>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "dodgerblue",
+                "marginHorizontal": 8,
+                "marginVertical": 8,
+                "padding": 15,
+              }
+            }
+          >
+            <Text
+              onPress={[Function]}
+              style={
+                Object {
+                  "fontSize": 18,
+                }
+              }
+            >
+              Chmury
+            </Text>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "dodgerblue",
+                "marginHorizontal": 8,
+                "marginVertical": 8,
+                "padding": 15,
+              }
+            }
+          >
+            <Text
+              onPress={[Function]}
+              style={
+                Object {
+                  "fontSize": 18,
+                }
+              }
+            >
+              Opady
+            </Text>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "dodgerblue",
+                "marginHorizontal": 8,
+                "marginVertical": 8,
+                "padding": 15,
+              }
+            }
+          >
+            <Text
+              onPress={[Function]}
+              style={
+                Object {
+                  "fontSize": 18,
+                }
+              }
+            >
+              Wiatr
+            </Text>
+          </View>
+        </View>
+      </View>
+    </RCTScrollView>
+  </View>,
+  <RNCSlider
+    disabled={false}
+    enabled={true}
+    inverted={false}
+    maximumTrackTintColor="#000000"
+    maximumValue={18}
+    minimumTrackTintColor="#FFFFFF"
+    minimumValue={1}
+    onChange={[Function]}
+    onRNCSliderSlidingComplete={null}
+    onRNCSliderSlidingStart={null}
+    onRNCSliderValueChange={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    step={1}
+    style={
+      Array [
+        Object {
+          "height": 40,
+        },
+        Object {
+          "height": 40,
+          "width": "100%",
+        },
+      ]
+    }
+    thumbImage={null}
+    thumbTintColor="dodgerblue"
+    value={9}
+  />,
+  <View
+    style={
+      Array [
+        Object {
+          "flex": 1,
+          "overflow": "hidden",
+        },
+        undefined,
+      ]
+    }
+  >
+    <RNCWebView
+      cacheEnabled={true}
+      injectedJavaScriptBeforeContentLoadedForMainFrameOnly={true}
+      injectedJavaScriptForMainFrameOnly={true}
+      javaScriptEnabled={true}
+      messagingEnabled={false}
+      onContentProcessDidTerminate={[Function]}
+      onHttpError={[Function]}
+      onLoadingError={[Function]}
+      onLoadingFinish={[Function]}
+      onLoadingProgress={[Function]}
+      onLoadingStart={[Function]}
+      onMessage={[Function]}
+      onShouldStartLoadWithRequest={[Function]}
+      source={
+        Object {
+          "html": "
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>Quick Start - Leaflet</title>
+	<meta charset=\\"utf-8\\" />
+    <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no\\" />
+	
+	<link rel=\\"shortcut icon\\" type=\\"image/x-icon\\" href=\\"docs/images/favicon.ico\\" />
+    <link rel=\\"stylesheet\\" href=\\"https://unpkg.com/leaflet@1.6.0/dist/leaflet.css\\" integrity=\\"sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==\\" crossorigin=\\"\\"/>
+    <script src=\\"https://unpkg.com/leaflet@1.6.0/dist/leaflet.js\\" integrity=\\"sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==\\" crossorigin=\\"\\"></script>
+	
+</head>
+<body>
+<div id=\\"mapid\\" style=\\"width: 100wh; height: 96vh;\\"></div>
+<script>
+	var mymap = L.map('mapid').setView([0, 0], 9);
+	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+        maxZoom: 9,
+        minZoom: 9,
+		attribution: 'Map data &copy; <a href=\\"https://www.openstreetmap.org/\\">OpenStreetMap</a> contributors, ' +
+			'<a href=\\"https://creativecommons.org/licenses/by-sa/2.0/\\">CC-BY-SA</a>, ' +
+			'Imagery © <a href=Mapbox,https://www.mapbox.com/>Mapbox,https://www.mapbox.com/</a>',
+		id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1
+	}).addTo(mymap);
+	L.marker([0, 0]).addTo(mymap)
+		.bindPopup(\\"<b>I'm here</b><br />lat:0<br />lon:0\\").openPopup();
+	
+	//var popup = L.popup();
+
+	function onMapClick(e) {
+		popup
+			.setLatLng(e.latlng)
+			.setContent(\\"You clicked the map at \\" + e.latlng.toString())
+			.openOn(mymap);
+	}
+	mymap.on('click', onMapClick);
+</script>
+</body>
+</html>
+",
+        }
+      }
+      style={
+        Array [
+          Object {
+            "flex": 1,
+            "overflow": "hidden",
+          },
+          Object {
+            "backgroundColor": "#ffffff",
+          },
+          undefined,
+        ]
+      }
+      useSharedProcessPool={true}
+    />
+  </View>,
+]
+`;
+
+exports[`Rendering:  Screens: WeatherForecast.js Result  1`] = `
+<View>
+  <Text>
+    Laduje się (moze byc jakis obrazek ladowania)
+  </Text>
+</View>
+`;
