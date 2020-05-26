@@ -1,11 +1,10 @@
-import React, {Component, useCallback} from 'react';
+import React, {useCallback} from 'react';
 import {
   View,
   Text,
   TouchableOpacity,
   Image,
   StyleSheet,
-  Button,
   Linking,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -21,48 +20,38 @@ const OpenURLText = ({url, children}) => {
     }
   }, [url]);
 
-  return <Text style={{color:'blue'}} onPress={handlePress}>{children}</Text>;
+  return (
+    <Text style={{color: 'blue'}} onPress={handlePress}>
+      {children}
+    </Text>
+  );
 };
 
-const About = ({navigation}) => {
+const About = () => {
   return (
-    <View
-      style={{
-        flex: 1,
-        alignContent: 'center',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
+    <View style={styles.mainView}>
       <View>
-        <View style={{marginLeft: 22}}>
+        <View style={styles.icon}>
           <Icon name="umbrella" size={128} color="rgb(88, 86, 214)" />
         </View>
-        <Text style={{color: 'rgb(88, 86, 214)', fontSize: 28}}>
-          WeatherAPP
-        </Text>
+        <Text style={styles.appName}>WeatherAPP</Text>
       </View>
-      <View
-        style={{
-          marginTop: 40,
-          marginHorizontal: 40,
-          marginVertical: 20,
-          alignItems: 'center',
-        }}>
-        <Text style={{fontWeight: 'bold'}}>O aplikacji:</Text>
+      <View style={styles.textView}>
+        <Text style={styles.textHeader}>About App:</Text>
         <Text>
-          Aplikacja pogodynka prezentująca aktualne dane pogodowe wraz z
-          prognoza pogody na następne dni
+          Weather application presenting actual weather data with the forecast
+          for a few next day.
         </Text>
       </View>
-      <View style={{marginVertical: 20}}>
-        <Text style={{fontWeight: 'bold'}}>Twórcy aplikacji:</Text>
+      <View style={styles.textView}>
+        <Text style={styles.textHeader}>Contributors:</Text>
         <Text>Szymon Joszko</Text>
         <Text>Krzysztof Dragon</Text>
         <Text>Wiktor Hosumbek</Text>
         <Text>Szymon Babula</Text>
       </View>
-      <View>
-        <Text style={{fontWeight: 'bold'}}>Kontakt:</Text>
+      <View style={styles.textView}>
+        <Text style={styles.textHeader}>Links:</Text>
         <OpenURLText url={'https://github.com/Majcew/WeatherAppReactNative'}>
           GitHub
         </OpenURLText>
@@ -72,6 +61,28 @@ const About = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
+  mainView: {
+    flex: 1,
+    alignContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: 40,
+  },
+  icon: {
+    marginLeft: 22,
+  },
+  appName: {
+    color: 'rgb(88, 86, 214)',
+    marginBottom: 40,
+    fontSize: 28,
+  },
+  textView: {
+    marginVertical: 10,
+    alignItems: 'center',
+  },
+  textHeader:{
+    fontWeight: 'bold',
+  },
   drawer: {
     marginRight: 10,
     width: 30,
