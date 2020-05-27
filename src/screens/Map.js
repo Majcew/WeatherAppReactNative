@@ -6,6 +6,7 @@ import {
   Image,
   StyleSheet,
   FlatList,
+  Picker,
 } from 'react-native';
 import {WebView} from 'react-native-webview';
 import Slider from '@react-native-community/slider';
@@ -46,29 +47,17 @@ const Map = ({navigation}) => {
   const latitude = currentCoords.lat;
   const longitude = currentCoords.lon;
 
-  function Item({item}) {
-    return (
-      <View style={styles.item}>
-        <Text
-          style={styles.title}
-          onPress={() => {
-            setLayer(item.id);
-          }}>
-          {item.title}
-        </Text>
-      </View>
-    );
-  }
-
   return (
     <>
-      <View>
-        <FlatList
-          horizontal
-          data={DATA}
-          renderItem={({item}) => <Item item={item} />}
-          keyExtractor={(item) => item.id}
-        />
+      <View style={{alignItems: 'center'}}>
+        <Picker
+          selectedValue={layer}
+          style={{width: '50%'}}
+          onValueChange={(itemValue, itemIndex) => setLayer(itemIndex)}>
+          {DATA.map((element) => {
+            return <Picker.Item label={element.title} value={element.id} />;
+          })}
+        </Picker>
       </View>
       <Slider
         style={{width: '100%', height: 40}}
