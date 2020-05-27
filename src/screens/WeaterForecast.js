@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 import * as API from '../utils/API';
 import moment from 'moment';
@@ -40,8 +41,8 @@ const WeatherForecast = ({navigation}) => {
 
   if (!ready) {
     return (
-      <View>
-        <Text>Laduje się (moze byc jakis obrazek ladowania)</Text>
+      <View style={styles.container}>
+        <ActivityIndicator size="large" color="#0000ff" />
       </View>
     );
   } else
@@ -87,6 +88,13 @@ const WeatherForecast = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    padding: 10,
+  },
   centerView: {
     height: 20,
     borderRadius: 4,
