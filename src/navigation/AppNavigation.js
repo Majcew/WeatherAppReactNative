@@ -5,6 +5,7 @@ import {createDrawerNavigator} from 'react-navigation-drawer';
 
 import Main from '../screens/Main';
 import About from '../screens/About';
+import UVIndex from '../screens/UVIndex';
 import WeatherForecast from '../screens/WeaterForecast';
 import Map from '../screens/Map';
 
@@ -12,6 +13,7 @@ const AppNavigator = createStackNavigator({
   Weather: Main,
   Map: Map,
   WeatherForecast: WeatherForecast,
+  UVIndex: UVIndex,
   About: About,
 });
 
@@ -37,6 +39,12 @@ const DrawerNav = createDrawerNavigator(
       screen: WeatherForecast,
       navigationOptions: {
         drawerLabel: 'WeatherForecast',
+      },
+    },
+    UVIndex: {
+      screen: UVIndex,
+      navigationOptions: {
+        drawerLabel: 'UV Index',
       },
     },
     About: {

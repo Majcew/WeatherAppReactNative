@@ -33,3 +33,14 @@ export const getAllInOne = async (latitude, longitude) => {
     return json;
   } catch (err) {}
 };
+export const getUVIndex = async (latitude, longitude) => {
+  try {
+    const response = await fetch(
+      API.baseURLUV + `lat=${latitude}&lon=${longitude}` + API.API_KEY,
+    );
+    const json = await response.json();
+    return json;
+  } catch (err) {
+    console.log('Error in API#getUVIndex: ', err);
+  }
+};
