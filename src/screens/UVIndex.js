@@ -26,7 +26,12 @@ const OpenURLText = ({url, children}) => {
 
   return (
     <Text
-      style={{color: 'blue', fontSize: 10, marginTop: 10}}
+      style={{
+        color: 'blue',
+        fontSize: 10,
+        marginTop: 10,
+        textAlign: 'left',
+      }}
       onPress={handlePress}>
       {children}
     </Text>
@@ -105,9 +110,9 @@ const UVIndex = () => {
           <Text style={setRiskStyle(allColors[risk])}>{allRisks[risk]}</Text>
         </View>
       </View>
-      <View style={styles.mainView}>
-        <View style={styles.infoView}>
-          <Text style={styles.info}>{UVIDesc[risk]}</Text>
+      <View style={styles.mainViewBottom}>
+        <Text style={styles.info}>{UVIDesc[risk]}</Text>
+        <View style={{width: '100%'}}>
           <OpenURLText url={'https://en.wikipedia.org/wiki/Ultraviolet_index'}>
             *Data from wikipedia
           </OpenURLText>
@@ -122,15 +127,17 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     alignItems: 'center',
     marginHorizontal: '10%',
-    top: '5%',
+    marginTop: '5%',
+  },
+  mainViewBottom: {
+    alignContent: 'center',
+    alignItems: 'center',
+    marginHorizontal: '10%',
+    marginBottom: '5%',
   },
   riskHeader: {
     textAlign: 'center',
     fontSize: 18,
-  },
-  infoView: {
-    bottom: '20%',
-    display: 'flex',
   },
   info: {
     textAlign: 'justify',
