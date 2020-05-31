@@ -1,13 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  Image,
-  StyleSheet,
-  FlatList,
-  Picker,
-} from 'react-native';
+import {View, TouchableOpacity, Image, StyleSheet, Picker} from 'react-native';
 import {WebView} from 'react-native-webview';
 import Slider from '@react-native-community/slider';
 import html_map from '../components/WeatherMap';
@@ -16,27 +8,27 @@ import {CurrentCoords} from '../context/Coords';
 const DATA = [
   {
     id: 0,
-    title: 'Mapa',
+    title: 'Map',
   },
   {
     id: 1,
-    title: 'Temperatura',
+    title: 'Temperature',
   },
   {
     id: 2,
-    title: 'Ciśnienie',
+    title: 'Pressure',
   },
   {
     id: 3,
-    title: 'Chmury',
+    title: 'Clouds',
   },
   {
     id: 4,
-    title: 'Opady',
+    title: 'Precipitation',
   },
   {
     id: 5,
-    title: 'Wiatr',
+    title: 'Wind',
   },
 ];
 
@@ -60,7 +52,7 @@ const Map = ({navigation}) => {
         </Picker>
       </View>
       <Slider
-        style={{width: '100%', height: 40}}
+        style={{width: '100%', height: '5%'}}
         value={zoom}
         minimumValue={1}
         maximumValue={18}
@@ -76,15 +68,6 @@ const Map = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-  item: {
-    backgroundColor: 'dodgerblue',
-    padding: 15,
-    marginVertical: 8,
-    marginHorizontal: 8,
-  },
-  title: {
-    fontSize: 18,
-  },
   drawer: {
     marginRight: 10,
     width: 30,
