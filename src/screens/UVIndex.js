@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     alignItems: 'center',
     marginHorizontal: '10%',
-    marginTop: '5%',
+    marginTop: '25%',
   },
   mainViewBottom: {
     alignContent: 'center',
