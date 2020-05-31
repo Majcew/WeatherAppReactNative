@@ -6,6 +6,7 @@ import {
   Image,
   StyleSheet,
   Linking,
+  Alert,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     alignItems: 'center',
   },
-  textHeader:{
+  textHeader: {
     fontWeight: 'bold',
   },
   drawer: {

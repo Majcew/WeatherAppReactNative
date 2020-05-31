@@ -6,6 +6,7 @@ import {
   Image,
   StyleSheet,
   Linking,
+  Alert,
 } from 'react-native';
 import * as API from '../utils/API';
 import {UVIDesc} from '../utils/UVIndexDesc';
@@ -74,8 +75,8 @@ const UVIndex = () => {
   const setUViStyle = (color) => {
     return {
       color: color,
-      marginBottom: 40,
       fontWeight: 'bold',
+      marginBottom: '5%',
       fontSize: 48,
     };
   };
@@ -83,13 +84,18 @@ const UVIndex = () => {
   const setRiskStyle = (color) => {
     return {
       color: color,
-      marginTop: 15,
+      marginTop: '5%',
       fontSize: 32,
     };
   };
   getUVi();
   return (
-    <ScrollView>
+    <ScrollView
+      contentContainerStyle={{
+        flexGrow: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+      }}>
       <View style={styles.mainView}>
         <View style={{alignItems: 'center'}}>
           <Text style={setUViStyle(allColors[risk])}>{UVi}</Text>
@@ -98,6 +104,8 @@ const UVIndex = () => {
           </Text>
           <Text style={setRiskStyle(allColors[risk])}>{allRisks[risk]}</Text>
         </View>
+      </View>
+      <View style={styles.mainView}>
         <View style={styles.infoView}>
           <Text style={styles.info}>{UVIDesc[risk]}</Text>
           <OpenURLText url={'https://en.wikipedia.org/wiki/Ultraviolet_index'}>
@@ -111,18 +119,17 @@ const UVIndex = () => {
 
 const styles = StyleSheet.create({
   mainView: {
-    flex: 1,
     alignContent: 'center',
     alignItems: 'center',
-    marginHorizontal: 40,
-    top: 15,
+    marginHorizontal: '10%',
+    top: '5%',
   },
   riskHeader: {
     textAlign: 'center',
     fontSize: 18,
   },
   infoView: {
-    bottom: -35,
+    bottom: '20%',
     display: 'flex',
   },
   info: {
