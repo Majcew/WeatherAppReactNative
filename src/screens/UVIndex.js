@@ -10,6 +10,7 @@ import {
 import * as API from '../utils/API';
 import {UVIDesc} from '../utils/UVIndexDesc';
 import {CurrentCoords} from '../context/Coords';
+import {ScrollView} from 'react-native-gesture-handler';
 
 const OpenURLText = ({url, children}) => {
   const handlePress = useCallback(async () => {
@@ -82,25 +83,29 @@ const UVIndex = () => {
   const setRiskStyle = (color) => {
     return {
       color: color,
-      marginBottom: 80,
+      marginTop: 15,
       fontSize: 32,
     };
   };
   getUVi();
   return (
-    <View style={styles.mainView}>
-      <Text style={setUViStyle(allColors[risk])}>{UVi}</Text>
-      <Text style={styles.riskHeader}>
-        Risk of harm from unprotected Sun exposure, for the average adult:
-      </Text>
-      <Text style={setRiskStyle(allColors[risk])}>{allRisks[risk]}</Text>
-      <View style={styles.infoView}>
-        <Text style={styles.info}>{UVIDesc[risk]}</Text>
-        <OpenURLText url={'https://en.wikipedia.org/wiki/Ultraviolet_index'}>
-          *Data from wikipedia
-        </OpenURLText>
+    <ScrollView>
+      <View style={styles.mainView}>
+        <View style={{alignItems: 'center'}}>
+          <Text style={setUViStyle(allColors[risk])}>{UVi}</Text>
+          <Text style={styles.riskHeader}>
+            Risk of harm from unprotected Sun exposure, for the average adult:
+          </Text>
+          <Text style={setRiskStyle(allColors[risk])}>{allRisks[risk]}</Text>
+        </View>
+        <View style={styles.infoView}>
+          <Text style={styles.info}>{UVIDesc[risk]}</Text>
+          <OpenURLText url={'https://en.wikipedia.org/wiki/Ultraviolet_index'}>
+            *Data from wikipedia
+          </OpenURLText>
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -109,10 +114,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignContent: 'center',
     alignItems: 'center',
-    justifyContent: 'center',
     marginHorizontal: 40,
-    position: 'relative',
-    top: -50,
+    top: 15,
   },
   riskHeader: {
     textAlign: 'center',
@@ -121,7 +124,6 @@ const styles = StyleSheet.create({
   infoView: {
     bottom: -35,
     display: 'flex',
-    position: 'absolute',
   },
   info: {
     textAlign: 'justify',
