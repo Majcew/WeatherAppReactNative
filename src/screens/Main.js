@@ -2,7 +2,7 @@ import React, {useState, useContext} from 'react';
 import {
   StyleSheet,
   View,
-  Dimensions,
+  Text,
   Image,
   TouchableOpacity,
   Alert,
@@ -48,10 +48,32 @@ const Main = ({navigation}) => {
       }
     } catch (err) {}
   };
+  const WeatherRender = () => {
+    if (weather) {
+      return (
+        <View>
+          <BasicWeather
+            updateTime={weather?.dt}
+            temperature={weather?.main?.temp}
+            basicWeatherDescription={weather?.weather[0]?.main}
+            advancedWeatherDescription={weather?.weather[0]?.description}
+          />
+          <View style={styles.horizontalLine} />
+          <DetailsBar
+            sunriseTime={weather?.sys?.sunrise}
+            sunsetTime={weather?.sys?.sunset}
+            airPressure={weather?.main?.pressure}
+            humidity={weather?.main?.humidity}
+          />
+        </View>
+      );
+    }
+    return <Text />;
+  };
 
   return (
     <View style={styles.flexTape}>
-      <ScrollView>
+      <ScrollView style={styles.container}>
         <View style={styles.mainView}>
           <View style={styles.topBar}>
             {console.log(weather?.name)}
@@ -64,20 +86,7 @@ const Main = ({navigation}) => {
               locationSet={getWeatherFromCoords}
             />
           </View>
-          <BasicWeather
-            updateTime={weather?.dt}
-            temperature={weather?.main?.temp}
-            basicWeatherDescription={weather?.weather[0]?.main}
-            advancedWeatherDescription={weather?.weather[0]?.description}
-          />
-
-          <View style={styles.horizontalLine} />
-          <DetailsBar
-            sunriseTime={weather?.sys?.sunrise}
-            sunsetTime={weather?.sys?.sunset}
-            airPressure={weather?.main?.pressure}
-            humidity={weather?.main?.humidity}
-          />
+          <WeatherRender />
         </View>
       </ScrollView>
     </View>
@@ -90,7 +99,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#0032b4',
+    backgroundColor: 'white',
   },
   mainView: {
     height: '100%',
