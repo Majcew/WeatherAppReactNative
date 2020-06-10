@@ -17,8 +17,8 @@ const Location = (props) => {
     Platform.select({
       android: ToastAndroid.showWithGravity(
         message,
-        ToastAndroid.SHORT,
-        ToastAndroid.CENTER,
+        ToastAndroid.LONG,
+        ToastAndroid.BOTTOM,
       ),
       ios: {},
     });
@@ -29,10 +29,15 @@ const Location = (props) => {
         (info) => {
           props.locationSet(info.coords.latitude, info.coords.longitude);
         },
-        (error) => errorToast(error),
+        (error) => errorToast(error.message),
         {enableHighAccuracy: false},
       );
     } else {
+      ToastAndroid.showWithGravity(
+        'Insufficient permissions to use this function!',
+        ToastAndroid.SHORT,
+        ToastAndroid.BOTTOM,
+      );
       request(permission).then((status) => {
         setPermresult(status);
       });
