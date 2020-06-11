@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Image, StyleSheet, View, Platform} from 'react-native';
+import {Image, StyleSheet, View, Platform, ToastAndroid} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import Geolocation from '@react-native-community/geolocation';
 import {check, request, PERMISSIONS, RESULTS} from 'react-native-permissions';
@@ -13,16 +13,31 @@ const Location = (props) => {
     ios: PERMISSIONS.IOS.LOCATION_WHEN_IN_USE,
   });
 
+  const errorToast = (message) =>
+    Platform.select({
+      android: ToastAndroid.showWithGravity(
+        message,
+        ToastAndroid.LONG,
+        ToastAndroid.BOTTOM,
+      ),
+      ios: {},
+    });
+
   const getLocationCoords = () => {
     if (permresult === RESULTS.GRANTED) {
       Geolocation.getCurrentPosition(
         (info) => {
           props.locationSet(info.coords.latitude, info.coords.longitude);
         },
-        (error) => console.log(error),
+        (error) => errorToast(error.message),
         {enableHighAccuracy: false},
       );
     } else {
+      ToastAndroid.showWithGravity(
+        'Insufficient permissions to use this function!',
+        ToastAndroid.SHORT,
+        ToastAndroid.BOTTOM,
+      );
       request(permission).then((status) => {
         setPermresult(status);
       });
