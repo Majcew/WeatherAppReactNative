@@ -33,7 +33,10 @@ const About = () => {
     <View style={styles.mainView}>
       <View>
         <View style={styles.icon}>
-          <Icon name="umbrella" size={128} color="rgb(88, 86, 214)" />
+          <Image
+          style={styles.umbrella}
+          source={require('../img/umbrella.png')}
+        />
         </View>
         <Text style={styles.appName}>WeatherAPP</Text>
       </View>
@@ -62,6 +65,7 @@ const About = () => {
 };
 
 const styles = StyleSheet.create({
+  
   mainView: {
     flex: 1,
     alignContent: 'center',
@@ -70,7 +74,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 40,
   },
   icon: {
-    marginLeft: 22,
+    marginLeft: 18,
   },
   appName: {
     color: 'rgb(88, 86, 214)',
@@ -88,6 +92,9 @@ const styles = StyleSheet.create({
     marginRight: 10,
     width: 30,
     height: 30,
+  },
+  umbrella:{
+    tintColor: "rgb(88, 86, 214)"
   },
 });
 
