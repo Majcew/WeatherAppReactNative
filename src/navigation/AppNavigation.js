@@ -1,4 +1,4 @@
-import {createAppContainer} from 'react-navigation';
+import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import {createDrawerNavigator} from 'react-navigation-drawer';
 
@@ -11,17 +11,11 @@ import LoadingScreen from '../screens/LoadingScreen';
 import NoConnection from '../screens/NoConnection';
 
 const AppNavigator = createStackNavigator({
-  Loading: LoadingScreen,
-  NoConnection: NoConnection,
   Weather: Main,
   Map: Map,
   WeatherForecast: WeatherForecast,
   UVIndex: UVIndex,
   About: About,
-});
-
-const LoadingNavigator = createStackNavigator({
-  Loading: LoadingScreen,
 });
 
 const DrawerNav = createDrawerNavigator(
@@ -66,4 +60,10 @@ const DrawerNav = createDrawerNavigator(
   },
 );
 
-export default createAppContainer(DrawerNav);
+export default createAppContainer(
+  createSwitchNavigator({
+    Loading: LoadingScreen,
+    NoConnection: NoConnection,
+    Main: DrawerNav,
+  }),
+);

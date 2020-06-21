@@ -6,7 +6,7 @@ const LoadingScreen = ({navigation}) => {
   useEffect(() => {
     setTimeout(() => {
       NetInfo.addEventListener((state) => {
-        navigation.navigate(state.isConnected ? 'Weather' : 'NoConnection');
+        navigation.navigate(state.isConnected ? 'Main' : 'NoConnection');
       });
     }, 3000);
   }, []);
