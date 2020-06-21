@@ -1,4 +1,3 @@
-import React from 'react';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import {createDrawerNavigator} from 'react-navigation-drawer';
@@ -8,13 +7,21 @@ import About from '../screens/About';
 import UVIndex from '../screens/UVIndex';
 import WeatherForecast from '../screens/WeaterForecast';
 import Map from '../screens/Map';
+import LoadingScreen from '../screens/LoadingScreen';
+import NoConnection from '../screens/NoConnection';
 
 const AppNavigator = createStackNavigator({
+  Loading: LoadingScreen,
+  NoConnection: NoConnection,
   Weather: Main,
   Map: Map,
   WeatherForecast: WeatherForecast,
   UVIndex: UVIndex,
   About: About,
+});
+
+const LoadingNavigator = createStackNavigator({
+  Loading: LoadingScreen,
 });
 
 const DrawerNav = createDrawerNavigator(
@@ -25,7 +32,7 @@ const DrawerNav = createDrawerNavigator(
     Weather: {
       screen: Main,
       navigationOptions: {
-        drawerLabel: 'Wheater',
+        drawerLabel: 'Weather',
       },
     },
 
