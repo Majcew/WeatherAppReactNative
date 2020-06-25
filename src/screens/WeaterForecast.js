@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignSelf: 'center',
     marginHorizontal: 10,
-    flex: 0.3,
+    flex: 0.5,
   },
   temperatureDay: {
     fontSize: 26,
