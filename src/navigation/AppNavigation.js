@@ -9,6 +9,7 @@ import WeatherForecast from '../screens/WeaterForecast';
 import Map from '../screens/Map';
 import LoadingScreen from '../screens/LoadingScreen';
 import NoConnection from '../screens/NoConnection';
+import Egzamin from '../screens/Egzamin';
 
 const AppNavigator = createStackNavigator({
   Weather: Main,
@@ -16,6 +17,7 @@ const AppNavigator = createStackNavigator({
   WeatherForecast: WeatherForecast,
   UVIndex: UVIndex,
   About: About,
+  Egzamin: Egzamin,
 });
 
 const DrawerNav = createDrawerNavigator(
@@ -52,6 +54,12 @@ const DrawerNav = createDrawerNavigator(
       screen: About,
       navigationOptions: {
         drawerLabel: 'About',
+      },
+    },
+    Egzamin: {
+      screen: Egzamin,
+      navigationOptions: {
+        drawerLabel: 'Egzamin',
       },
     },
   },
